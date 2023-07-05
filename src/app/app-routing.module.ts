@@ -1,14 +1,14 @@
-// import { NgModule } from '@angular/core';
-// import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-// import { DetalleComponent } from 'ruta-de-tu-detalle.component'; // Importa el componente de detalle
+import { PaisComponent } from './components/pais/pais.component'; // Importa el componente de detalle
 
-// const routes: Routes = [
-//   { path: 'component/:id', component: DetalleComponent }, // Ruta para el detalle con el parámetro ID
-// ];
+const routes: Routes = [
+  { path: ':pais', component: PaisComponent }, // Ruta para el detalle con el parámetro ID
+];
 
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule]
-// })
-// export class AppRoutingModule { }
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

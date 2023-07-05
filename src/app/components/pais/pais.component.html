@@ -1,0 +1,10 @@
+<h1 class="titulo-pais">Recetas de {{ nombrePais }} </h1>
+<div *ngIf="recetas">
+    <div class="recetas-container">
+    <ul>
+        <div *ngFor="let receta of recetas" class="receta-item">
+            <li><button class="receta-button">{{receta.nombre}}</button></li>
+        </div>
+    </ul>
+    </div>
+</div>

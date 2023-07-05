@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './api.service';
+import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,19 +10,32 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'recetas-paises';
   datos: any;
+  ocultarInicio: boolean = false;
+  PaisActivado: string = '';
 
   constructor(private router: Router, private apiService: ApiService) { }
 
-  redirigirDetalle(id: string) {
-    this.router.navigate(['/detalle', id]); // Navega a la ruta '/detalle' con el ID como parámetro
+  activarPais(accion: string, pais: string) {
+    if (accion != 'desactivar'){
+      this.ocultarInicio = true;
+      this.PaisActivado = pais;
+    }
+    else{
+      this.ocultarInicio = false;
+      this.PaisActivado = '';
+    }
+  }
+
+  redirigirDetalle(pais: string) {
+    this.router.navigate(['/' + pais]); // Navega a la ruta '/detalle' con el ID como parámetro
   }
 
   ngOnInit(): void {
     this.apiService.getDatos().subscribe(
-      (response) => {
+      (response: any) => {
         this.datos = response;
       },
-      (error) => {
+      (error: any) => {
         console.error(error);
       }
     );

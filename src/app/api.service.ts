@@ -14,9 +14,9 @@ export class ApiService {
     return this.http.get<any>(`${this.apiUrl}/recipes`);
   }
 
-  // getRecetasPais(pais:string): Observable<any> {
-  //   return this.http.get<any>(`${this.apiUrl}/recipes/${pais}`);
-  // }
+  getRecetasPais(pais:string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/recipes/${pais}`);
+  }
 
   // postDatos(datos: any): Observable<any> {
   //   return this.http.post<any>(`${this.apiUrl}/datos`, datos);

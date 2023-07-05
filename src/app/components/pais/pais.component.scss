@@ -1,4 +1,4 @@
-.recetario-heading {
+.titulo-pais {
     font-size: 36px;
     color: #333;
     text-align: left;
@@ -6,12 +6,12 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   }
 
-.datos-container {
+.recetas-container {
     display: flex;
     justify-content: left;
 }
   
-.dato-item {
+.receta-item {
     margin: 10px;
 }
 
@@ -19,7 +19,7 @@ ul{
     list-style: none;
 }
   
-.dato-button {
+.receta-button {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #4CAF50;
@@ -29,8 +29,7 @@ ul{
     cursor: pointer;
 }
   
-.dato-button:hover {
+.receta-button:hover {
     background-color: black;
     transform: translateX(7px);
 }
-  
