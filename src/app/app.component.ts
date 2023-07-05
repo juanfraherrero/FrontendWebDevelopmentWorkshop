@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,11 @@ export class AppComponent implements OnInit {
   title = 'recetas-paises';
   datos: any;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private router: Router, private apiService: ApiService) { }
+
+  redirigirDetalle(id: string) {
+    this.router.navigate(['/detalle', id]); // Navega a la ruta '/detalle' con el ID como parámetro
+  }
 
   ngOnInit(): void {
     this.apiService.getDatos().subscribe(

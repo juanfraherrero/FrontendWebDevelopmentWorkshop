@@ -1,4 +1,10 @@
-<h1>Datos obtenidos de la API:</h1>
+<h1 class="recetario-heading">Bienvenido al recetario del mundo:</h1>
 <div *ngIf="datos">
-  <p>nombre: {{ datos[0].nombre }}</p>
+  <div class="datos-container">
+    <ul>
+    <div *ngFor="let dato of datos" class="dato-item">
+      <li><button class="dato-button">{{ dato.nombre }}</button></li>
+    </div>
+    </ul>
+  </div>
 </div>
