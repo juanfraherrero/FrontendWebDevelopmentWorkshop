@@ -4,11 +4,15 @@ import { AppComponent } from './components/main/app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PaisComponent } from './components/pais/pais.component';
 import { AppRoutingModule } from './app-routing.module';
+import { RecetaComponent } from './components/receta/receta.component';
+import { HeaderBarComponent } from './components/header-bar/header-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PaisComponent
+    PaisComponent,
+    RecetaComponent,
+    HeaderBarComponent
   ],
   imports: [
     HttpClientModule,
@@ -18,4 +22,5 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

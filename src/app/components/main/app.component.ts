@@ -11,23 +11,34 @@ export class AppComponent implements OnInit {
   title = 'recetas-paises';
   datos: any;
   ocultarInicio: boolean = false;
-  PaisActivado: string = '';
+  paisActivado: string = '';
+  clickReceta: boolean = false;
 
   constructor(private router: Router, private apiService: ApiService) { }
 
-  activarPais(accion: string, pais: string) {
+  Pais(accion: string, pais: string) {
     if (accion != 'desactivar'){
       this.ocultarInicio = true;
-      this.PaisActivado = pais;
+      this.paisActivado = pais;
+      this.redirigirPais(pais);
     }
     else{
       this.ocultarInicio = false;
-      this.PaisActivado = '';
+      this.paisActivado = '';
+      this.redirigirMain();
     }
   }
 
-  redirigirDetalle(pais: string) {
-    this.router.navigate(['/' + pais]); // Navega a la ruta '/detalle' con el ID como parámetro
+  redirigirPais(pais: string) {
+    this.router.navigate(['/' + pais]); 
+  }
+
+  redirigirMain() {
+    this.router.navigate(['/']);
+  }
+
+  recetaSeleccionada(valor: boolean) {
+    this.clickReceta = valor;
   }
 
   ngOnInit(): void {
