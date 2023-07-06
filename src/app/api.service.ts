@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000'; 
+  private apiUrl = 'http://localhost:3000';
+  paisActual: string = ''; 
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +16,12 @@ export class ApiService {
   }
 
   getRecetasPais(pais:string): Observable<any> {
+    this.paisActual = pais;
     return this.http.get<any>(`${this.apiUrl}/recipes/${pais}`);
+  }
+
+  getReceta(receta:string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/recipes/${this.paisActual}/${receta}`);
   }
 
   // postDatos(datos: any): Observable<any> {

@@ -12,20 +12,16 @@ export class PaisComponent implements OnInit {
   recetas: any;
   ocultarPais: boolean = false;
   recetaActivada: string = '';
-  descripcion: Array<string> = [];
-  ingredientes: Array<JSON> = [];
   ocultarVolver: boolean = true;
   @Input() nombrePais: string = '';
   @Output() variableEnviada = new EventEmitter<boolean>();
 
   constructor(private router: Router, private apiService: ApiService) { }
 
-  Receta(accion: string, receta: string, descripcion: Array<string>, ingredientes: Array<JSON>) {
+  Receta(accion: string, receta: string) {
     this.recetaActivada = receta;
     if (accion != 'desactivar'){
       this.ocultarPais = true;
-      this.descripcion = descripcion;
-      this.ingredientes = ingredientes;
       this.ocultarVolverPais(true);
       this.redirigirReceta(receta);
     }

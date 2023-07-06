@@ -1,3 +1,10 @@
-<p>La receta seleccionada es {{ nombreReceta }} </p>
-<p>Su descripcion es {{ descripcionReceta }} </p>
-<p>Los ingredientes son{{ ingredientesReceta }} </p>
+
+<div *ngIf="receta" class="datos-receta">
+    <h1>{{ nombreReceta }} </h1>
+    <div *ngFor="let oracion of receta[0].descripcion">
+        <p>{{ oracion }} </p>
+    </div>
+    <!-- <div *ngFor="let ingrediente of receta[0].ingredientes">
+        <p>{{ ingrediente[0].nombre }} </p>
+    </div> -->
+</div>

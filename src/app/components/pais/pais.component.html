@@ -3,16 +3,12 @@
     <div class="recetas-container">
     <ul>
         <div *ngFor="let receta of recetas" class="receta-item">
-            <li><button class="receta-button" (click)="Receta('activar', receta.nombre, receta.descripcion, receta.ingredientes)" [hidden]="ocultarPais">{{receta.nombre}}</button></li>
+            <li><button class="receta-button" (click)="Receta('activar', receta.nombre)" [hidden]="ocultarPais">{{receta.nombre}}</button></li>
         </div>
     </ul>
     </div>
     <div *ngIf="ocultarPais">
-        <app-receta 
-        [nombreReceta]="recetaActivada"
-        [descripcionReceta]="descripcion"
-        [ingredientesReceta]="ingredientes"
-        ></app-receta>
-        <button class="volver-button" (click)="Receta('desactivar','',[],[])">&lt; Volver</button>
+        <app-receta [nombreReceta]="recetaActivada"></app-receta>
+        <button class="volver-button" (click)="Receta('desactivar','')">&lt; Volver</button>
     </div>
 </div>
