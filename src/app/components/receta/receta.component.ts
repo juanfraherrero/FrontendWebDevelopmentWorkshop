@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-receta',
@@ -10,7 +11,7 @@ export class RecetaComponent implements OnInit{
   receta: any;
   @Input() nombreReceta: string = '';
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
     ngOnInit(): void {
     this.apiService.getReceta(this.nombreReceta).subscribe(
@@ -21,5 +22,11 @@ export class RecetaComponent implements OnInit{
         console.error(error);
       }
     );
+  }
+
+  Delete() {
+    console.log("Pase");
+    this.apiService.deleteReceta();
+    //this.router.navigate(['/']);
   }
 }

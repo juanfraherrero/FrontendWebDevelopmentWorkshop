@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
   private apiUrl = 'http://localhost:3000';
   paisActual: string = ''; 
+  recetaActual: string = '';
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +22,19 @@ export class ApiService {
   }
 
   getReceta(receta:string): Observable<any> {
+    this.recetaActual = receta;
     return this.http.get<any>(`${this.apiUrl}/recipes/${this.paisActual}/${receta}`);
+  }
+
+  deleteReceta(): void {
+    this.http.delete<any>(`${this.apiUrl}/recipes/${this.paisActual}/${this.recetaActual}`).subscribe(
+      () => {
+        console.log('La receta se eliminó correctamente.');
+      },
+      (error) => {
+        console.error('Error al eliminar la receta:', error);
+      }
+    );
   }
 
   // postDatos(datos: any): Observable<any> {
