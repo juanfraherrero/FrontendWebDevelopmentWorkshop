@@ -8,7 +8,7 @@
     </ul>
     </div>
     <div *ngIf="ocultarPais">
-        <app-receta [nombreReceta]="recetaActivada"></app-receta>
+        <app-receta [nombreReceta]="recetaActivada" [nombrePais]="nombrePais"></app-receta>
         <button class="volver-button" (click)="Receta('desactivar','')">&lt; Volver</button>
     </div>
 </div>

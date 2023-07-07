@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class RecetaComponent implements OnInit{
   receta: any;
   @Input() nombreReceta: string = '';
+  @Input() nombrePais: string = '';
 
   constructor(private apiService: ApiService, private router: Router) { }
 
@@ -25,8 +26,7 @@ export class RecetaComponent implements OnInit{
   }
 
   Delete() {
-    console.log("Pase");
     this.apiService.deleteReceta();
-    //this.router.navigate(['/']);
+    window.location.href  = "/";
   }
 }
