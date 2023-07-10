@@ -37,6 +37,17 @@ export class ApiService {
     );
   }
 
+  updateReceta(modificaciones: any): void {
+    this.http.put<any>(`${this.apiUrl}/recipes/${this.paisActual}/${this.recetaActual}`, modificaciones).subscribe(
+      () => {
+        console.log('La receta se eliminó correctamente.');
+      },
+      (error) => {
+        console.error('Error al eliminar la receta:', error);
+      }
+    );
+  }
+
   // postDatos(datos: any): Observable<any> {
   //   return this.http.post<any>(`${this.apiUrl}/datos`, datos);
   // }

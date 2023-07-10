@@ -1,0 +1,23 @@
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    font-size: 18px;
+}
+
+.ingredientes {
+    padding-left: 20px;
+}
+
+.sepIngredientes {
+    border-top: 1px dashed white;
+    border-width: 1px;
+    width: 25%;
+}
+
+.sepDatos {
+    border-top: 1px solid white;
+}

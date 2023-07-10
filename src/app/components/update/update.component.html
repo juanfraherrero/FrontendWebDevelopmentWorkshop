@@ -1,0 +1,23 @@
+<div>
+    <h1>Modificar una receta</h1>
+    <form>
+        <ul>
+            <li>
+                <p>Nombre de la receta: {{ receta[0].nombre }}</p>
+            </li>
+            <div class="sepDatos"></div>
+            <li>
+                <p>Ingredientes: </p>
+                <div *ngFor="let ingrediente of receta[0].ingredientes">
+                    <div class="sepIngredientes"></div>
+                    <p class="ingredientes">Nombre ingrediente: {{ ingrediente.nombre }}</p>
+                    <p class="ingredientes">Cantidad: {{ ingrediente.cantidad }}</p>
+                </div>
+            </li>
+            <div class="sepDatos"></div>
+            <li>
+
+            </li>
+        </ul>
+    </form>
+</div>

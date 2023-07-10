@@ -11,6 +11,7 @@ export class RecetaComponent implements OnInit{
   receta: any;
   @Input() nombreReceta: string = '';
   @Input() nombrePais: string = '';
+  modificarReceta: boolean = true;
 
   constructor(private apiService: ApiService, private router: Router) { }
 
@@ -25,7 +26,11 @@ export class RecetaComponent implements OnInit{
     );
   }
 
-  Delete() {
+  activacionUpdate(){
+      this.modificarReceta = ! this.modificarReceta;
+  }
+
+  delete() {
     this.apiService.deleteReceta();
     window.location.href  = "/";
   }
