@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './components/main/app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PaisComponent } from './components/pais/pais.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RecetaComponent } from './components/receta/receta.component';
@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PaisesComponent } from './components/paises/paises.component';
 import { RecetasComponent } from './components/recetas/recetas.component';
 import { InfoRecetaComponent } from './components/info-receta/info-receta.component';
+import { HttpErrorInteceptor } from './error.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,13 @@ import { InfoRecetaComponent } from './components/info-receta/info-receta.compon
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInteceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 

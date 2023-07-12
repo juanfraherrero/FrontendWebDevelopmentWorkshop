@@ -36,3 +36,20 @@
 .volver-button:focus {
   outline: none;
   }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+  }
+  
+  .item img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
+  
+  .item button {
+    margin-top: 10px;
+  }

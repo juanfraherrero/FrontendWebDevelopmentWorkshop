@@ -23,7 +23,7 @@ export class ApiService {
 
   // devuelve los paises con direcciones a sus banderas
   getPaises(): Observable<Country[]> {
-    return this.http.get<Country[]>(`${this.apiUrl}/recipes`)
+    return this.http.get<Country[]>(`${this.apiUrl}/recipes/`)/*
     .pipe(
       retry(2),                   // intenta obtener 2 veces los datos si falla 
       catchError((error) => {     // si falla, devuelve un array vacio y imprime por consola un error
@@ -32,12 +32,12 @@ export class ApiService {
       //
       // Podríamos agregar que rediriga a una página de error o algo así para que quede copado
       //
-    }));
+    }));*/
   }
 
   // devuelve las recetas de un pais
   getRecetasPais(pais:string): Observable<{recetas:Recipe[]}[]> {
-    return this.http.get<{recetas:Recipe[]}[]>(`${this.apiUrl}/recipes/${pais}`)
+    return this.http.get<{recetas:Recipe[]}[]>(`${this.apiUrl}/recipes/${pais}`)/*
     .pipe(
       retry(2),
       catchError((error) => {
@@ -46,12 +46,12 @@ export class ApiService {
       //
       // Podríamos agregar que rediriga a una página de error o algo así para que quede copado
       //
-    }));
+    }));*/
   }
 
   // devuelve una receta de un pais
   getReceta(pais:string, receta:string): Observable<{recetas:Recipe[]}[]> {
-    return this.http.get<{recetas:Recipe[]}[]>(`${this.apiUrl}/recipes/${pais}/${receta}`)
+    return this.http.get<{recetas:Recipe[]}[]>(`${this.apiUrl}/recipes/${pais}/${receta}`)/*
     .pipe(
       retry(2),
       catchError((error) => {
@@ -60,12 +60,12 @@ export class ApiService {
         //
         // Podríamos agregar que rediriga a una página de error o algo así para que quede copado
         //
-      }));
+      }));*/
   }
 
   // elmimina una receta de el pais
   deleteReceta(pais:string, receta:string): Observable<string> {
-    return this.http.delete(`${this.apiUrl}/recipes/deleteRecipe/${pais}/${receta}`,{responseType: 'text'})
+    return this.http.delete(`${this.apiUrl}/recipes/${pais}/${receta}`,{responseType: 'text'})
   }
 
 
