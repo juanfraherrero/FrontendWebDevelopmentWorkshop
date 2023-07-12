@@ -23,44 +23,17 @@ export class ApiService {
 
   // devuelve los paises con direcciones a sus banderas
   getPaises(): Observable<Country[]> {
-    return this.http.get<Country[]>(`${this.apiUrl}/recipes/`)/*
-    .pipe(
-      retry(2),                   // intenta obtener 2 veces los datos si falla 
-      catchError((error) => {     // si falla, devuelve un array vacio y imprime por consola un error
-      console.error('Error al obtener los paises:', error); 
-      return [];
-      //
-      // Podríamos agregar que rediriga a una página de error o algo así para que quede copado
-      //
-    }));*/
+    return this.http.get<Country[]>(`${this.apiUrl}/recipes/`)
   }
 
   // devuelve las recetas de un pais
-  getRecetasPais(pais:string): Observable<{recetas:Recipe[]}[]> {
-    return this.http.get<{recetas:Recipe[]}[]>(`${this.apiUrl}/recipes/${pais}`)/*
-    .pipe(
-      retry(2),
-      catchError((error) => {
-      console.error('Error al obtener las recetas del pais:', error);
-      return [];
-      //
-      // Podríamos agregar que rediriga a una página de error o algo así para que quede copado
-      //
-    }));*/
+  getRecetasPais(pais:string): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${this.apiUrl}/recipes/${pais}`)
   }
 
   // devuelve una receta de un pais
-  getReceta(pais:string, receta:string): Observable<{recetas:Recipe[]}[]> {
-    return this.http.get<{recetas:Recipe[]}[]>(`${this.apiUrl}/recipes/${pais}/${receta}`)/*
-    .pipe(
-      retry(2),
-      catchError((error) => {
-        console.error('Error al obtener la receta:', error);
-        return [];
-        //
-        // Podríamos agregar que rediriga a una página de error o algo así para que quede copado
-        //
-      }));*/
+  getReceta(pais:string, receta:string): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.apiUrl}/recipes/${pais}/${receta}`)
   }
 
   // elmimina una receta de el pais

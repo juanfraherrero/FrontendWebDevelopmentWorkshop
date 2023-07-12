@@ -22,10 +22,10 @@ export class RecetasComponent implements OnInit{
   ngOnInit(): void {
     this.pais = this.route.snapshot.params["pais"]; //Obtengo el pais de la ruta
 
-    this.apiService.getRecetasPais(this.pais).subscribe( (response: {recetas:Recipe[]}[]) => {
+    this.apiService.getRecetasPais(this.pais).subscribe( (response: Recipe[]) => {
       // si la response está vacía (no encuentra nada)
-      if (response !== undefined && response[0] !== undefined && response[0]["recetas"] !== undefined){
-        this.recetas = response[0]["recetas"]; 
+      if (response !== undefined){
+        this.recetas = response; 
       }else{
         this.router.navigate(['/']);
       }});
