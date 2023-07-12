@@ -1,52 +1,38 @@
-.titulo-pais {
-    font-size: 36px;
-    color: #333;
-    text-align: left;
-    margin: 20px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  }
+@use '../../../styles.scss';
 
-.recetas-container {
-    display: flex;
-    justify-content: left;
+.bandera-pais{
+  width: 100px;
+  height: 100%;
 }
   
-.receta-item {
-    margin: 10px;
-}
-
-ul{
-    list-style: none;
-}
-  
-.receta-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.pais-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: styles.$light-primary-button;
+  color: styles.$light-text;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
   
-.receta-button:hover {
-    background-color: black;
-    transform: translateX(7px);
+.pais-button:hover {
+  background-color: styles.$light-secondary-button;
+  transform: translateX(7px);
 }
 
 .volver-button {
-    background-color: #ebfeeb;
-    color: black;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+  background-color: styles.$light-primary-button;
+  color: styles.$light-text;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
   
-  .volver-button:hover {
-    background-color: #d2d1d1;
-  }
+.volver-button:hover {
+  background-color: styles.$light-secondary-button;
+}
   
-  .volver-button:focus {
-    outline: none;
-    }
+.volver-button:focus {
+  outline: none;
+  }

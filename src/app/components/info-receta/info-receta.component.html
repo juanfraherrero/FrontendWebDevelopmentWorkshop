@@ -1,0 +1,39 @@
+<ng-container *ngIf="receta; else noHayReceta" 
+    class="datos-receta">
+    <h1 >{{ nombreReceta }} </h1>
+    <h2>Descripción</h2>
+    <ng-container *ngFor="let oracion of receta.descripcion">
+        <p>{{ oracion }} </p>
+    </ng-container>
+    <h2>ingredientes</h2>
+    <div *ngFor="let ingrediente of receta.ingredientes">
+        <p>{{ ingrediente.nombre }} </p>
+        <ul>
+            <li>{{ ingrediente.cantidad }}</li>
+            <li *ngIf="ingrediente.opcional">Es opcional</li>
+        </ul>
+    </div>
+    <h2>Preparación</h2>
+    <div *ngFor="let oracion of receta.preparacion">
+        <ul><li>{{oracion}}</li></ul>
+    </div>
+    <ng-container *ngIf="receta.consejos">
+        <h2>Consejos</h2>
+        <div *ngFor="let oracion of receta.consejos">
+            <ul><li>{{oracion}}</li></ul>
+        </div>
+    </ng-container>
+    <button class="delete-button" 
+        (click)="delete()">
+            <img src="../../../assets/cruzeliminar.png" alt="Eliminar receta" title="Eliminar receta"/>
+    </button>
+    <button class="delete-button update-button" 
+        (click)="activacionUpdate()">
+        <img src = "../../../assets/update.png" alt="Modificar Receta" title="Modificar receta">
+    </button>
+    <!-- <div *ngIf="!modificarReceta">
+        <app-update [receta]="receta"></app-update>
+    </div> -->
+</ng-container>
+
+<ng-template #noHayReceta>No hay información de la receta</ng-template>

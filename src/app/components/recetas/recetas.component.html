@@ -1,0 +1,24 @@
+<h1 class="titulo-pais">Recetas de {{ pais }} </h1>
+
+<ng-container *ngIf="recetas;else noTieneRecetas">
+    <div class="recetas-container">
+        <ul>
+            <app-receta *ngFor="let receta of recetas" 
+                class="receta-item"
+                [receta]="receta"
+                [nombrePais]="pais"
+                >
+            </app-receta>
+        </ul>
+    </div>
+</ng-container>
+
+<ng-template #noTieneRecetas>No tiene recetas el pais</ng-template>
+
+<button 
+    class="volver-button" 
+    routerLink="{{'/'}}"
+    title="Volver al inicio"
+    >
+    Volver
+</button>

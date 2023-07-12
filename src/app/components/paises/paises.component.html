@@ -1,0 +1,16 @@
+<h1 class="recetario-heading">Bienvenido al recetario del mundo:</h1>
+  
+<div 
+    *ngIf="paises;else noHayPaises"
+    class="paises-container"
+>
+    <ul>
+        <app-pais 
+            *ngFor="let pais of paises" 
+            class="pais-item" 
+            [pais]=pais>
+        </app-pais>
+    </ul>
+</div>
+
+<ng-template #noHayPaises>No hay paises hasta el momento cargados</ng-template>

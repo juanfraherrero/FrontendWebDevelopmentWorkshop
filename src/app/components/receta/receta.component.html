@@ -1,32 +1,13 @@
-<div *ngIf="receta" class="datos-receta">
-    <div *ngIf="modificarReceta">
-        <h1 >{{ nombreReceta }} </h1>
-        <h2>Descripción</h2>
-        <div *ngFor="let oracion of receta[0].descripcion">
-            <p>{{ oracion }} </p>
-        </div>
-        <h2>ingredientes</h2>
-        <div *ngFor="let ingrediente of receta[0].ingredientes">
-            <p>{{ ingrediente.nombre }} </p>
-            <ul>
-                <li>{{ ingrediente.cantidad }}</li>
-                <li *ngIf="ingrediente.opcional">Es opcional</li>
-            </ul>
-        </div>
-        <h2>Preparación</h2>
-        <div *ngFor="let oracion of receta[0].preparacion">
-            <ul><li>{{oracion}}</li></ul>
-        </div>
-        <div *ngIf="receta[0].consejos.length > 0">
-            <h2>Consejos</h2>
-            <div *ngFor="let oracion of receta[0].consejos">
-                <ul><li>{{oracion}}</li></ul>
-            </div>
-        </div>
-        <button class="delete-button" (click)="delete()"><img src="../../../assets/cruzeliminar.png" alt="Eliminar"/></button>
-        <button class="delete-button update-button" (click)="activacionUpdate()"><img src = "../../../assets/update.png" alt="Modificar Receta"></button>
-    </div>
-    <div *ngIf="! modificarReceta">
-        <app-update [receta]="receta"></app-update>
-    </div>
-</div>
+<li>
+    <img class="imagen-receta"
+        src="{{receta.imagen}}"
+        alt="imagen de {{receta.nombre}}"
+        >
+    <button 
+        class="receta-button" 
+        title="Expandir receta"
+        [routerLink]="['/' + nombrePais, receta.nombre]"
+        >
+        {{receta.nombre}}
+    </button>
+</li>

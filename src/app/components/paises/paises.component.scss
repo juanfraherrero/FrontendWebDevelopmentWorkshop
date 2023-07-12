@@ -1,0 +1,21 @@
+@use '../../../styles.scss';
+.recetario-heading {
+    font-size: 36px;
+    color: #333;
+    text-align: left;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+.paises-container {
+    display: flex;
+    justify-content: left;
+}
+  
+.pais-item {
+    margin: 10px;
+}
+
+ul{
+    list-style: none;
+}

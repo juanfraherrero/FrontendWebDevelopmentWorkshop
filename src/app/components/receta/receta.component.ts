@@ -1,37 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ApiService } from '../../api.service';
-import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
+
+import Recipe from 'src/app/interfaces/recipe';
 
 @Component({
   selector: 'app-receta',
   templateUrl: './receta.component.html',
   styleUrls: ['./receta.component.scss']
 })
-export class RecetaComponent implements OnInit{
-  receta: any;
-  @Input() nombreReceta: string = '';
-  @Input() nombrePais: string = '';
-  modificarReceta: boolean = true;
+export class RecetaComponent {
+  
+  @Input() receta : Recipe = {} as Recipe;
+  @Input() nombrePais : string = '';
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor() { }
 
-    ngOnInit(): void {
-    this.apiService.getReceta(this.nombreReceta).subscribe(
-      (response: any) => {
-        this.receta = response[0].recetas; //Lo que devuelve es un atributo llamado recetas que adentro tiene un arreglo de recetas en si, por eso el agregado de .recetas
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
-  }
-
-  activacionUpdate(){
-      this.modificarReceta = ! this.modificarReceta;
-  }
-
-  delete() {
-    this.apiService.deleteReceta();
-    window.location.href  = "/";
-  }
 }

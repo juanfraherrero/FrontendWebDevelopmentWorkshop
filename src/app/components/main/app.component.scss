@@ -1,59 +1,6 @@
 @use '../../../styles.scss';
 
 .spacer-main{
-    border-top: 1px solid styles.$light-accent;
+    border-top: 0.2em solid styles.$light-accent;
     margin-bottom: 4vh;
 }
-
-.recetario-heading {
-    font-size: 36px;
-    color: #333;
-    text-align: left;
-    margin: 20px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-.datos-container {
-    display: flex;
-    justify-content: left;
-}
-  
-.dato-item {
-    margin: 10px;
-}
-
-ul{
-    list-style: none;
-}
-  
-.dato-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-  
-.dato-button:hover {
-    background-color: black;
-    transform: translateX(7px);
-}
-
-.volver-button {
-    background-color: #ebfeeb;
-    color: black;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .volver-button:hover {
-    background-color: #d2d1d1;
-  }
-  
-  .volver-button:focus {
-    outline: none;
-    }

@@ -1,19 +1,28 @@
+@use '../../../styles.scss';
 .toolbar {
+    height: 5vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-weight: 700;
+    font-size: 1.5em;
+    margin: 0 1.5vw 0 1.5vw;
 }
 
 #logo {
     width: 40px;
     height: 40px;
     margin-right: 10px;
+    transition: scale 0.15s ease-in-out 0s;
 }
+#logo:hover, #github-logo:hover {
+    scale : 1.1;
 
+}
 #github-logo {
     width: 40px;
     height: 40px;
     margin-left: 10px;
-    
+    transition: scale 0.15s ease-in-out 0s;
 }

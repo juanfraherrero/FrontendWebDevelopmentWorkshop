@@ -1,14 +1,12 @@
-<h1 class="titulo-pais" [hidden]="ocultarPais">Recetas de {{ nombrePais }} </h1>
-<div *ngIf="recetas">
-    <div class="recetas-container">
-    <ul>
-        <div *ngFor="let receta of recetas" class="receta-item">
-            <li><button class="receta-button" (click)="Receta('activar', receta.nombre)" [hidden]="ocultarPais">{{receta.nombre}}</button></li>
-        </div>
-    </ul>
-    </div>
-    <div *ngIf="ocultarPais">
-        <app-receta [nombreReceta]="recetaActivada" [nombrePais]="nombrePais"></app-receta>
-        <button class="volver-button" (click)="Receta('desactivar','')">&lt; Volver</button>
-    </div>
-</div>
+<li class="item-pais">
+    <img class="bandera-pais"
+        src="{{ pais.bandera }}" 
+        alt="bandera de {{ pais.nombre }}"
+        > 
+    <button class="pais-button" 
+        routerLink="{{'/'+pais.nombre}}"
+        title="Ver recetas de {{ pais.nombre }}"
+        >
+        {{ pais.nombre }}
+    </button>
+</li>

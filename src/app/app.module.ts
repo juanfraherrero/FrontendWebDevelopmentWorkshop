@@ -7,6 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecetaComponent } from './components/receta/receta.component';
 import { HeaderBarComponent } from './components/header-bar/header-bar.component';
 import { updateComponent } from './components/update/update.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { PaisesComponent } from './components/paises/paises.component';
+import { RecetasComponent } from './components/recetas/recetas.component';
+import { InfoRecetaComponent } from './components/info-receta/info-receta.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import { updateComponent } from './components/update/update.component';
     PaisComponent,
     RecetaComponent,
     HeaderBarComponent,
-    updateComponent
+    updateComponent,
+    FooterComponent,
+    PaisesComponent,
+    RecetasComponent,
+    InfoRecetaComponent
   ],
   imports: [
     HttpClientModule,

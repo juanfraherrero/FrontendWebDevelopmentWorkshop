@@ -1,16 +1,6 @@
 <app-header-bar></app-header-bar>
 <div class="spacer-main"></div>
-<ng-container *ngIf="datos">
-  <h1 class="recetario-heading" [hidden]="ocultarInicio">Bienvenido al recetario del mundo:</h1>
-  <div class="datos-container">
-    <ul>
-    <div *ngFor="let dato of datos" class="dato-item">
-      <li><button class="dato-button" (click)="Pais('activar',dato.nombre)" [hidden]="ocultarInicio">{{ dato.nombre }}</button></li>
-    </div>
-    </ul>
-  </div>
-  <div *ngIf="ocultarInicio">
-      <app-pais [nombrePais]="paisActivado" (variableEnviada)="recetaSeleccionada($event)"></app-pais>
-      <button class="volver-button" (click)="Pais('desactivar','')" [hidden]="clickReceta">&lt; Volver</button>
-  </div>
-</ng-container>
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>

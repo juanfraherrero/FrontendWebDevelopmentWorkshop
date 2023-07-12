@@ -1,26 +1,34 @@
  /* You can add global styles to this file, and also import other style files */
-// $font-stack: 'Roboto', sans-serif;
+
+ // CHOOSE THE THEME HERE
+$font-stack: 'Roboto', sans-serif;
 
 // $light-text: #020304;
 // $light-background: #dbe9f0;
 // $light-primary-button: #203d4b;
 // $light-secondary-button: #c6dce7;
+// $light-accent: #284b5d;
+
+$light-text: white;
+$light-background: #b1ecb1;
+$light-primary-button: #4CAF50;
+$light-secondary-button: black;
 $light-accent: #284b5d;
 
-// $dark-text: #f3e1f4;
-// $dark-background: #1d0b1e;
-// $dark-primary-button: #203d4b;
-// $dark-secondary-button: #070308;
-// $dark-accent: #284b5d;
+$dark-text: #f3e1f4;
+$dark-background: #1d0b1e;
+$dark-primary-button: #203d4b;
+$dark-secondary-button: #070308;
+$dark-accent: #284b5d;
 
 // * {
-//     font-family: $font-stack;
     
-//     color: $light-text;
-//     background-color: $light-background;
-// }
- 
- 
- body {
-    background-color: #b1ecb1
+    //     color: $light-text;
+    //     background-color: $light-background;
+    // }
+    
+    
+body {
+    font-family: $font-stack;
+    background-color: $light-background
 }
