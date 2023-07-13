@@ -12,6 +12,7 @@ import { PaisesComponent } from './components/paises/paises.component';
 import { RecetasComponent } from './components/recetas/recetas.component';
 import { InfoRecetaComponent } from './components/info-receta/info-receta.component';
 import { HttpErrorInteceptor } from './error.interceptor';
+import { SelectRecetaComponent } from './components/selectReceta/selectReceta.component';
 import { WorldBgComponent } from './components/world-bg/world-bg.component';
 import { PersonaComponent } from './components/footer/persona/persona.component';
 
@@ -27,7 +28,8 @@ import { PersonaComponent } from './components/footer/persona/persona.component'
     RecetasComponent,
     InfoRecetaComponent,
     WorldBgComponent,
-    PersonaComponent
+    PersonaComponent,
+    SelectRecetaComponent
   ],
   imports: [
     HttpClientModule,

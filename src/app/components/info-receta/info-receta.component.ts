@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 
 import Recipe from '../../interfaces/recipe';
+import ResAPIRest from '../../interfaces/resAPIRest';
 
 @Component({
   selector: 'app-info-receta',
@@ -33,12 +34,17 @@ export class InfoRecetaComponent implements OnInit {
   }
 
   delete() {
-    this.apiService.deleteReceta(this.pais, this.nombreReceta)
-      .subscribe((response: string) => {
-        console.log(response);
-        this.router.navigate(['/' + this.pais]);
+    let cantRecetas: number;
+    this.apiService.getRecetasPais(this.pais).subscribe((response: Recipe[]) => {
+      cantRecetas = response.length;
+      this.apiService.deleteReceta(this.pais, this.nombreReceta)
+      .subscribe((): void => {
+        if (cantRecetas > 1){
+          this.router.navigate(['/' + this.pais]);
+        } else {
+          this.router.navigate(['/']);
+        }
       })
-
-      
+    })
   }
 }

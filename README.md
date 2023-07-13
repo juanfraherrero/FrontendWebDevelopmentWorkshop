@@ -44,7 +44,6 @@ Cuando se hace una petición por las recetas de un pais específico la API devue
     - Agregar barra de filtrado en main
     - Filtrar recetas de un pais
     - poder eliminar una receta desde el componente recetas
-    - En la API el delete devuelve un texto, tiene devolver un json
     - sacar de la url de borrar la palabra delete, se sobre entiende al hacer un delete! 
     - Estilar footer
     - Hacer el update 

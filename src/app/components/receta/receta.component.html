@@ -1,4 +1,4 @@
-<li>
+<li class="item">
     <img class="imagen-receta"
         src="{{receta.imagen}}"
         alt="imagen de {{receta.nombre}}"
@@ -6,8 +6,9 @@
     <button 
         class="receta-button" 
         title="Expandir receta"
-        [routerLink]="['/' + nombrePais, receta.nombre]"
+        (click)="menu()"
         >
         {{receta.nombre}}
     </button>
+    <app-selectReceta *ngIf="verMenu" [nombrePais]="nombrePais" [receta]="receta"></app-selectReceta> 
 </li>

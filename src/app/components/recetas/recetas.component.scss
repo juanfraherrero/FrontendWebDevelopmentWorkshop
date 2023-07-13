@@ -19,10 +19,13 @@
 
 ul{
     list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    flex-wrap: wrap;
 }
   
-
-
 .volver-button {
     background-color: styles.$light-primary-button;
     color: styles.$light-text;

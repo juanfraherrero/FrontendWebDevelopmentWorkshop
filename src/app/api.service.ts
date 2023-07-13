@@ -5,6 +5,7 @@ import { Observable, catchError, retry } from 'rxjs';
 
 import Country from './interfaces/country';
 import Recipe from './interfaces/recipe';
+import resAPIRest from './interfaces/resAPIRest';
 
 @Injectable({
   providedIn: 'root'
@@ -37,8 +38,8 @@ export class ApiService {
   }
 
   // elmimina una receta de el pais
-  deleteReceta(pais:string, receta:string): Observable<string> {
-    return this.http.delete(`${this.apiUrl}/recipes/${pais}/${receta}`,{responseType: 'text'})
+  deleteReceta(pais:string, receta:string): Observable<resAPIRest> {
+    return this.http.delete<resAPIRest>(`${this.apiUrl}/recipes/${pais}/${receta}`)
   }
 
 
