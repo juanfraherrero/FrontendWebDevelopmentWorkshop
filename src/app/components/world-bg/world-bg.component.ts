@@ -45,21 +45,29 @@ export class WorldBgComponent {
 
     // controles de la orbita
     const controls = new TrackballControls( camera, renderer.domElement );
+    
 
+    const material = new THREE.MeshPhongMaterial()
+    const texture = new THREE.TextureLoader().load('../../../assets/worldColour.5400x2700.jpg') // cargamos la textura del mundo
+    material.map = texture
+    
+    const normalTexture = new THREE.TextureLoader().load( '../../../assets/earth_normalmap_8192_4096.jpg' ) // cargamos la textura normal del mundo
+    material.normalMap = normalTexture
+    material.normalScale.set(0.2, 0)
 
-    const worldTexture  = new THREE.TextureLoader().load( '../../../assets/earthTextureNasa.webp' );  // cargamos la textura del mundo
-
-    const world = new THREE.Mesh(
-      new THREE.CapsuleGeometry( 1.0, 0.2, 15, 50 ),
-      new THREE.MeshStandardMaterial({
-        map: worldTexture
-      })
+    const bumpTexture = new THREE.TextureLoader().load( '../../../assets/earth_bumpmap.jpg')
+    material.bumpMap = bumpTexture
+    material.bumpScale = 0.001
+    
+    const world = new THREE.Mesh( 
+      new THREE.CapsuleGeometry( 1.0, 0.1, 15, 50 ),
+      material
     );
     scene.add( world );
 
     // LUCES
-    const pointLight = new THREE.PointLight( 0xffffff, 1.0 );
-    pointLight.position.set( 5, 5, 5 );
+    const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+    pointLight.position.set( 5, 5, -20 );
     scene.add( pointLight );
 
     const ambienLight = new THREE.AmbientLight( 0xffffff, 0.3 );
