@@ -1,4 +1,4 @@
-
+@use '../../../../styles.scss';
 
 .nombre{    
     font-size: 1rem;
@@ -11,4 +11,5 @@
 .svg{
     width: 2rem;
     height: 100%;
+    fill: styles.$light-text;
 }

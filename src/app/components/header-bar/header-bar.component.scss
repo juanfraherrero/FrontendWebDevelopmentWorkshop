@@ -7,7 +7,9 @@
     align-items: center;
     font-weight: 700;
     font-size: 1.5em;
-    margin: 0 1.5vw 0 1.5vw;
+    margin: 1vh 1.5vw 0 1.5vw;
+    background-color: styles.$light-background;
+    // color: styles.$light-primary-button;
 }
 
 #logo {
@@ -25,4 +27,5 @@
     height: 40px;
     margin-left: 10px;
     transition: scale 0.15s ease-in-out 0s;
+    // fill: styles.$light-primary-button;
 }

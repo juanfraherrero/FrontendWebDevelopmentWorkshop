@@ -15,7 +15,7 @@ import { PerspectiveCameraForResizableWindow , handleCameraRotation, handleMouse
 export class WorldBgComponent {
   @ViewChild('worldBg', { static: true }) canvasElementRef!: ElementRef<HTMLCanvasElement>; // obtenemos el elemento canvas del DOM
   
-  private background:THREE.ColorRepresentation = 0x4CAF50; // color de fondo del canvas
+  private background:THREE.ColorRepresentation = 0xF9F7F2; // color de fondo del canvas
   
 
 
@@ -60,7 +60,7 @@ export class WorldBgComponent {
     material.bumpScale = 0.001
     
     const world = new THREE.Mesh( 
-      new THREE.CapsuleGeometry( 1.0, 0.1, 15, 50 ),
+      new THREE.CapsuleGeometry( 0.8, 0.1, 15, 50 ),
       material
     );
     scene.add( world );

@@ -13,11 +13,14 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color, padding 0.1s ease-in-out 0s;
+  // transition: padding 0.1s ease-in-out 0s;
 }
   
 .pais-button:hover {
   background-color: styles.$light-secondary-button;
-  transform: translateX(7px);
+  padding: 13px 35px;
+  font-weight: 700;
 }
 
 .volver-button {
@@ -37,15 +40,31 @@
   outline: none;
   }
 
-  .item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-height: 10rem;
+  height: 10rem;
+  margin: 0.5rem;
+  padding: 1rem;
+  color: styles.$light-primary-button;
+  background-color: styles.$light-background;
+  border-radius: 2rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
   
-  .item img {
+  .img-container {
+    flex: 1 0 auto;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item img {
+    width: 80%;
     max-width: 200px;
     height: auto;
   }

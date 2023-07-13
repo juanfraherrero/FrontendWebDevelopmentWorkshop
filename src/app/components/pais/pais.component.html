@@ -1,8 +1,10 @@
 <li class="item">
-    <img class="bandera-pais"
-        src="{{ pais.bandera }}" 
-        alt="bandera de {{ pais.nombre }}"
-        > 
+    <div class="img-container">
+        <img class="bandera-pais"
+            src="{{ pais.bandera }}" 
+            alt="bandera de {{ pais.nombre }}"
+            > 
+    </div>
     <button class="pais-button" 
         routerLink="{{'/'+pais.nombre}}"
         title="Ver recetas de {{ pais.nombre }}"

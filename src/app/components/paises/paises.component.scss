@@ -1,10 +1,13 @@
 @use '../../../styles.scss';
 .recetario-heading {
-    font-size: 36px;
-    color: #333;
-    text-align: left;
-    margin: 20px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 4rem;
+    color: styles.$light-primary-button;
+    background-color: styles.$light-background;
+    border-radius: 1rem;
+    text-align: center;
+    margin: auto;
+    width: 50vw;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
 
 .paises-container {

@@ -9,11 +9,11 @@ $font-stack: 'Roboto', sans-serif;
 // $light-secondary-button: #c6dce7;
 // $light-accent: #284b5d;
 
-$light-text: white;
-$light-background: #b1ecb1;
-$light-primary-button: #4CAF50;
-$light-secondary-button: black;
-$light-accent: #284b5d;
+$light-text: #ededed;
+$light-background: #F9F7F2;
+$light-primary-button: #E58500;
+$light-secondary-button: #331E00;
+$light-accent: #E58500;//#737270;//8E5E98;
 
 $dark-text: #f3e1f4;
 $dark-background: #1d0b1e;
@@ -31,10 +31,14 @@ $dark-accent: #284b5d;
 body {
     font-family: $font-stack;
     background-color: $light-background;
+    letter-spacing: 0.01rem!important;
     // lo ponemos relative para que el footer pueda estar absolute a contenido y no a la ventana
     position: relative;
     min-height: 100vh;
     margin: 0
+}
+button {
+    letter-spacing: 0.015rem ;
 }
 
 .main-app-root{
