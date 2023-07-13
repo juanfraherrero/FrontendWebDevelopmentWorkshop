@@ -39,5 +39,6 @@ body {
 
 .main-app-root{
     min-height: 100vh;
-    display: block;
+    display: flex;
+    flex-flow: column nowrap;
 }

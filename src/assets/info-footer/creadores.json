@@ -1,0 +1,25 @@
+{
+    "creadores":[
+        {
+            "nombre":"Burckhardt David",
+            "twitter":"http://twitter.com/",
+            "instagram": "http://instagram.com/",
+            "linkedin": "http://linkedin.com/",
+            "github": "http://github.com/"
+        },
+        {
+            "nombre":"Herrero Juan Francisco",
+            "twitter":"http://twitter.com/",
+            "instagram": "http://instagram.com/",
+            "linkedin": "http://linkedin.com/",
+            "github": "http://github.com/"
+        },
+        {
+            "nombre":"Vazquez Arispe Martín",
+            "twitter":"http://twitter.com/",
+            "instagram": "http://instagram.com/",
+            "linkedin": "http://linkedin.com/",
+            "github": "http://github.com/"
+        }
+    ]
+}

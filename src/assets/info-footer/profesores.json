@@ -1,0 +1,18 @@
+{
+    "creadores":[
+        {
+            "nombre":"Zunino Alejandro",
+            "twitter":"http://twitter.com/",
+            "instagram": "http://instagram.com/",
+            "linkedin": "http://linkedin.com/",
+            "github": "http://github.com/"
+        },
+        {
+            "nombre":"Teyseyre Alfredo Raul",
+            "twitter":"http://twitter.com/",
+            "instagram": "http://instagram.com/",
+            "linkedin": "http://linkedin.com/",
+            "github": "http://github.com/"
+        }
+    ]
+}

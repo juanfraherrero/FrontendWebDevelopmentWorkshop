@@ -13,6 +13,7 @@ import { RecetasComponent } from './components/recetas/recetas.component';
 import { InfoRecetaComponent } from './components/info-receta/info-receta.component';
 import { HttpErrorInteceptor } from './error.interceptor';
 import { WorldBgComponent } from './components/world-bg/world-bg.component';
+import { PersonaComponent } from './components/footer/persona/persona.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { WorldBgComponent } from './components/world-bg/world-bg.component';
     PaisesComponent,
     RecetasComponent,
     InfoRecetaComponent,
-    WorldBgComponent
+    WorldBgComponent,
+    PersonaComponent
   ],
   imports: [
     HttpClientModule,
