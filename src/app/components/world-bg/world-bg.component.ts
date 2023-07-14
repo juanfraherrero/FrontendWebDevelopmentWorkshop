@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import CameraOrientationState from '../../../assets/helpersTHREE/CameraOrientationState';
 import { PerspectiveCameraForResizableWindow , handleCameraRotation, handleMouseMovement } from '../../../assets/helpersTHREE/CameraWithMouseRotation';
+import { Texture } from 'three';
 
 @Component({
   selector: 'app-world-bg',
@@ -15,13 +16,18 @@ import { PerspectiveCameraForResizableWindow , handleCameraRotation, handleMouse
 export class WorldBgComponent {
   @ViewChild('worldBg', { static: true }) canvasElementRef!: ElementRef<HTMLCanvasElement>; // obtenemos el elemento canvas del DOM
   
-  private background:THREE.ColorRepresentation = 0xF9F7F2; // color de fondo del canvas
-  
+  private background: Texture;
 
+  constructor() {
+    // Asignar un valor inicial a 'background'
+    this.background = new THREE.Texture();
+  }
 
   ngOnInit() {
-    const scene = new THREE.Scene();                            //creas una escena
-    scene.background = new THREE.Color( this.background );      //le asignas un color de fondo
+    const scene = new THREE.Scene();
+    const textureLoader = new THREE.TextureLoader();
+    this.background = textureLoader.load('assets/cielo_estrellado.jpg');                            //creas una escena
+    scene.background = this.background;      //le asignas un color de fondo
 
     const renderer = new THREE.WebGLRenderer({ canvas: this.canvasElementRef.nativeElement }); // le pasamos el elemento canvas al renderer
     renderer.setPixelRatio( window.devicePixelRatio );
@@ -39,8 +45,6 @@ export class WorldBgComponent {
       handleMouseMovement(mouse.x, mouse.y, cameraOrientationState);
     }
     document.addEventListener('mousemove', onMouseMove, false);
-    
-    
     
 
     // controles de la orbita

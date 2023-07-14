@@ -1,4 +1,9 @@
 @use '../../../styles.scss';
+
+* {
+    width: 100%; /* Aplicar un ancho del 100% a todos los elementos dentro del componente */
+  }
+
 .toolbar {
     height: 5vh;
     display: flex;
@@ -7,15 +12,20 @@
     align-items: center;
     font-weight: 700;
     font-size: 1.5em;
-    margin: 1vh 1.5vw 0 1.5vw;
-    background-color: styles.$light-background;
+    margin: 0;
+    padding-top: 8px;
+    background-color: styles.$light-primary-button
     // color: styles.$light-primary-button;
+}
+
+.toolbar-title{
+    margin-left: 11%;
 }
 
 #logo {
     width: 40px;
     height: 40px;
-    margin-right: 10px;
+    margin-left: 5%;
     transition: scale 0.15s ease-in-out 0s;
 }
 #logo:hover, #github-logo:hover {
@@ -25,7 +35,7 @@
 #github-logo {
     width: 40px;
     height: 40px;
-    margin-left: 10px;
+    margin-left: 90%;
     transition: scale 0.15s ease-in-out 0s;
     // fill: styles.$light-primary-button;
 }
