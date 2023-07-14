@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './components/main/app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { PaisComponent } from './components/pais/pais.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RecetaComponent } from './components/receta/receta.component';
@@ -36,7 +37,8 @@ import { infoIngrComponent } from './components/info-ingr/info-ingr.component';
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     {
