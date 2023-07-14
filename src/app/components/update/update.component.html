@@ -1,23 +1,35 @@
 <div>
     <h1>Modificar una receta</h1>
-    <form>
-        <ul>
-            <li>
-                <p>Nombre de la receta: {{ receta[0].nombre }}</p>
-            </li>
-            <div class="sepDatos"></div>
-            <li>
-                <p>Ingredientes: </p>
-                <div *ngFor="let ingrediente of receta[0].ingredientes">
-                    <div class="sepIngredientes"></div>
-                    <p class="ingredientes">Nombre ingrediente: {{ ingrediente.nombre }}</p>
-                    <p class="ingredientes">Cantidad: {{ ingrediente.cantidad }}</p>
-                </div>
-            </li>
-            <div class="sepDatos"></div>
-            <li>
-
-            </li>
-        </ul>
+    <form (ngSubmit)="actualizar()">
+        <h2>Nombre de la Receta</h2>
+        <input type="text" ngModel="recetaModificada.nombre" placeholder="Nombre" value="{{receta.nombre}}">
+        <h2>Descripcion de la Receta</h2>
+        <textarea  *ngFor="let parrafo of receta.descripcion" type="text" placeholder="Descripcion" value="{{parrafo}}" rows="{{ numRows }}"></textarea>
+        <div>
+            <button type="button" (click)="crearParrafo('descripcion')" class="buttonGenerico buttonAddParrafo">Crear Parrafo</button>
+            <button type="button" (click)="eliminarParrafo('descripcion')" class="buttonGenerico buttonDeleteParrafo">Eliminar Ultimo Parrafo</button>
+        </div>
+        <h2>Imagen de la Receta</h2>
+        <img src="{{receta.imagen}}" alt="Imagen de la receta">
+        <input type="text" placeholder="URL Imagen">
+        <h2>Ingredientes de la Receta</h2>
+        <app-info-ingr *ngFor="let ingrediente of receta.ingredientes" [ingrediente]="ingrediente"> </app-info-ingr>
+        <div>
+            <button type="button" (click)="crearIngr()" class="buttonGenerico buttonAddParrafo">Crear Parrafo</button>
+            <button type="button" (click)="eliminarIngr()" class="buttonGenerico buttonDeleteParrafo">Eliminar Ultimo Parrafo</button>
+        </div>
+        <h2>Preparacion de la Receta</h2>
+        <textarea *ngFor="let parrafo of receta.preparacion" type="text" placeholder="Preparacion" value="{{parrafo}}"></textarea>
+        <div>
+            <button type="button" (click)="crearParrafo('preparacion')" class="buttonGenerico buttonAddParrafo">Crear Parrafo</button>
+            <button type="button" (click)="eliminarParrafo('preparacion')" class="buttonGenerico buttonDeleteParrafo">Eliminar Ultimo Parrafo</button>
+        </div>
+        <h2>Consejos de la Receta</h2>
+        <textarea *ngFor="let parrafo of receta.consejos" type="text" placeholder="Consejos" value="{{parrafo}}"></textarea>
+        <div>
+            <button type="button" (click)="crearParrafo('consejos')" class="buttonGenerico buttonAddParrafo">Crear Parrafo</button>
+            <button type="button" (click)="eliminarParrafo('consejos')" class="buttonGenerico buttonDeleteParrafo">Eliminar Ultimo Parrafo</button>
+        </div>
+        <button type="submit" class="buttonActualizar">Actualizar Receta</button>
     </form>
 </div>

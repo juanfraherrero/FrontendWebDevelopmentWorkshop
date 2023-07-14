@@ -43,15 +43,8 @@ export class ApiService {
   }
 
 
-  updateReceta(pais:string, receta:string, modificaciones: any): void {
-    this.http.put<any>(`${this.apiUrl}/recipes/${pais}/${receta}`, modificaciones).subscribe(
-      () => {
-        console.log('La receta se eliminó correctamente.');
-      },
-      (error) => {
-        console.error('Error al eliminar la receta:', error);
-      }
-    );
+  updateReceta(pais:string, receta:string, modificaciones: any): Observable<resAPIRest> {
+    return this.http.put<resAPIRest>(`${this.apiUrl}/recipes/${pais}/${receta}`, modificaciones)
   }
 
   // postDatos(datos: any): Observable<any> {

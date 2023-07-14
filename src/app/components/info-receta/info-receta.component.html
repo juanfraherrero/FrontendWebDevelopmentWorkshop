@@ -28,12 +28,9 @@
             <img src="../../../assets/cruzeliminar.png" alt="Eliminar receta" title="Eliminar receta"/>
     </button>
     <button class="delete-button update-button" 
-        (click)="activacionUpdate()">
+    [routerLink]="['/update/'+pais+'/'+receta.nombre]">
         <img src = "../../../assets/update.png" alt="Modificar Receta" title="Modificar receta">
     </button>
-    <!-- <div *ngIf="!modificarReceta">
-        <app-update [receta]="receta"></app-update>
-    </div> -->
 </ng-container>
 
 

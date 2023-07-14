@@ -1,23 +1,51 @@
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+form{
+    display: flex;
+    flex-direction: column;
 }
 
-p {
-    font-size: 18px;
+input {
+    width: 600px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    resize: none;
 }
 
-.ingredientes {
-    padding-left: 20px;
+input::placeholder{
+    position: absolute;
+    left: 50%;
 }
 
-.sepIngredientes {
-    border-top: 1px dashed white;
-    border-width: 1px;
-    width: 25%;
+textarea {
+    width: 600px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    resize: vertical;
 }
 
-.sepDatos {
-    border-top: 1px solid white;
+.buttonAddParrafo{
+    width: 100px;
+    position: relative;
+    left: 10%;
+}
+
+.buttonDeleteParrafo{
+    width: 180px;
+    position: relative;
+    left: 12%;
+}
+
+img{
+    width: 200px;
+    height: 150px;
+    position: relative;
+    left: 10%;
+}
+
+.buttonActualizar{
+    width: 150px;
+    position: relative;
+    left: 15%;
+    margin-top: 20px;
 }

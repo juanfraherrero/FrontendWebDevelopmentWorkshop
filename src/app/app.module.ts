@@ -15,6 +15,7 @@ import { HttpErrorInteceptor } from './error.interceptor';
 import { SelectRecetaComponent } from './components/selectReceta/selectReceta.component';
 import { WorldBgComponent } from './components/world-bg/world-bg.component';
 import { PersonaComponent } from './components/footer/persona/persona.component';
+import { infoIngrComponent } from './components/info-ingr/info-ingr.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PersonaComponent } from './components/footer/persona/persona.component'
     InfoRecetaComponent,
     WorldBgComponent,
     PersonaComponent,
-    SelectRecetaComponent
+    SelectRecetaComponent,
+    infoIngrComponent
   ],
   imports: [
     HttpClientModule,
