@@ -1,6 +1,7 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { ActivatedRoute,Router } from '@angular/router';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 
 import Recipe from '../../interfaces/recipe';
 import Ingredient from 'src/app/interfaces/ingredient';
@@ -16,7 +17,14 @@ export class updateComponent implements OnInit{
     pais:string = '';
     nombreReceta : string = '';
     receta: Recipe = {} as Recipe;
-    recetaModificada: Recipe = {} as Recipe;
+    formUpdate: FormGroup = new FormGroup({
+      nombre: new FormControl(''),
+      descripcion: new FormArray([]),
+      imagen: new FormControl(''),
+      ingredientes: new FormArray<FormGroup>([]),
+      preparacion: new FormArray([]),
+      consejos: new FormArray([])
+    })
 
     constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {}
     
@@ -26,28 +34,45 @@ export class updateComponent implements OnInit{
 
       this.apiService.getReceta(this.pais, this.nombreReceta).subscribe( (response: Recipe) => {
         this.receta = response;
-        this.recetaModificada = JSON.parse(JSON.stringify(this.receta));
+        this.formUpdate.patchValue({
+          nombre: this.receta.nombre
+        });
+        this.formUpdate.setControl('descripcion', new FormArray(this.receta.descripcion.map(parrafo => new FormControl(parrafo))))
+        this.formUpdate.setControl('ingredientes', new FormArray(this.receta.ingredientes.map(ingrediente => new FormGroup({
+                                                                                                              nombre: new FormControl(ingrediente.nombre),
+                                                                                                              cantidad: new FormControl(ingrediente.cantidad),
+                                                                                                              opcional: new FormControl(ingrediente.opcional)}))))
+        this.formUpdate.setControl('preparacion', new FormArray(this.receta.preparacion.map(parrafo => new FormControl(parrafo))))
+        this.formUpdate.setControl('consejos', new FormArray(this.receta.consejos.map(parrafo => new FormControl(parrafo))))
       })
+      console.log(this.formUpdate)
     }
 
+    //Getters
+
+    get descripcion(){
+      return this.formUpdate.get('descripcion') as FormArray;
+    }
+
+    get ingredientes(){
+      return this.formUpdate.get('ingredientes') as FormArray<FormGroup>;
+    }
+
+    get preparacion(){
+      return this.formUpdate.get('preparacion') as FormArray;
+    }
+
+    get consejos(){
+      return this.formUpdate.get('consejos') as FormArray;
+    }
+
+
     crearParrafo(atributo: string){
-      if (atributo == 'descripcion'){
-        this.recetaModificada.descripcion.push('');
-      } if (atributo == 'preparacion'){
-        this.recetaModificada.preparacion.push('');
-      } else {
-        this.recetaModificada.consejos?.push('');
-      }
+      
     }
 
     eliminarParrafo(atributo:string): void{
-      if (atributo == 'descripcion'){
-        this.recetaModificada.descripcion.pop();
-      } if (atributo == 'preparacion'){
-        this.recetaModificada.preparacion.pop();
-      } else {
-        this.recetaModificada.consejos?.pop();
-      }
+      
     }
 
     crearIngr(){
@@ -64,7 +89,7 @@ export class updateComponent implements OnInit{
       let i: number = 0;
       let iguales: boolean = true;
       while(i < tamanio){
-        if(array[i] && array[i].length === 0 ){
+        if(array[i].length === 0 ){
           array.splice(i,1);
           tamanio--;
         } else {
@@ -75,6 +100,7 @@ export class updateComponent implements OnInit{
       if (tamanio !== tamanioOri) {iguales = false};
       i = 0;
       while(iguales && i < tamanio){
+        console.log(array[i]);
         if(array[i] === arrayOriginal[i]){
           i++;
         } else {
@@ -85,7 +111,7 @@ export class updateComponent implements OnInit{
     }
 
     actualizar(){
-      let act : {
+      /*let act : {
         nombre?: string,
         descripcion? : string[],
         imagen? : string,
@@ -101,6 +127,6 @@ export class updateComponent implements OnInit{
         act.descripcion = this.recetaModificada.descripcion;
       }
       console.log(this.receta.descripcion);
-      this.apiService.updateReceta(this.pais, this.nombreReceta, act).subscribe((): void => {this.router.navigate(['/'+this.pais+'/'+this.nombreReceta]);});
+      this.apiService.updateReceta(this.pais, this.nombreReceta, act).subscribe((): void => {this.router.navigate(['/'+this.pais+'/'+this.nombreReceta]);});*/
     }
 }

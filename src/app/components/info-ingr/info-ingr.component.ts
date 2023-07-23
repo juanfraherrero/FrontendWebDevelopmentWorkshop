@@ -1,8 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ApiService } from '../../api.service';
-import { ActivatedRoute,Router } from '@angular/router';
-
-import Ingredient from '../../interfaces/ingredient';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-info-ingr',
@@ -11,5 +8,9 @@ import Ingredient from '../../interfaces/ingredient';
 })
 
 export class infoIngrComponent{
-    @Input() ingrediente: Ingredient = {} as Ingredient
+    @Input() ingredienteForm: FormGroup = new FormGroup({
+        nombre: new FormControl(''),
+        cantidad: new FormControl(''),
+        opcional: new FormControl(false)
+    });
 }
