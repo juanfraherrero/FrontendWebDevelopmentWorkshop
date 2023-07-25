@@ -17,6 +17,7 @@ import { SelectRecetaComponent } from './components/selectReceta/selectReceta.co
 import { WorldBgComponent } from './components/world-bg/world-bg.component';
 import { PersonaComponent } from './components/footer/persona/persona.component';
 import { infoIngrComponent } from './components/info-ingr/info-ingr.component';
+import { AutoResizeDirective } from './autoResizeTextarea'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { infoIngrComponent } from './components/info-ingr/info-ingr.component';
     WorldBgComponent,
     PersonaComponent,
     SelectRecetaComponent,
-    infoIngrComponent
+    infoIngrComponent,
+    AutoResizeDirective
   ],
   imports: [
     HttpClientModule,

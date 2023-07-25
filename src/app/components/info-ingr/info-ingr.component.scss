@@ -1,7 +1,20 @@
 input {
-    width: 200px;
+    width: 300px;
     margin-bottom: 10px;
     margin-left: 10px;
     border-radius: 10px;
     resize: none;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 8px; 
+    border: 2px solid #000; 
+}
+
+.checkbox{
+    display: inline-block;
+    width: 20px; /* Tamaño personalizado */
+    height: 20px; /* Tamaño personalizado */
+    border: 2px solid #000;
+    border-radius: 5px;
 }

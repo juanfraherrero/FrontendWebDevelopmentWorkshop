@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive, ElementRef, HostListener  } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
@@ -13,7 +13,7 @@ import Ingredient from 'src/app/interfaces/ingredient';
 })
 
 
-export class updateComponent implements OnInit{
+export class updateComponent implements OnInit {
     pais:string = '';
     nombreReceta : string = '';
     receta: Recipe = {} as Recipe;
@@ -25,14 +25,6 @@ export class updateComponent implements OnInit{
       preparacion: new FormArray([]),
       consejos: new FormArray([])
     })
-    cambios = {
-      nombre: false,
-      descripcion: false,
-      imagen: false,
-      ingredientes: false,
-      preparacion: false,
-      consejos: false
-    }
 
     constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {}
     
@@ -157,6 +149,7 @@ export class updateComponent implements OnInit{
       if (this.compararIngredientes()){
         act.ingredientes = this.formUpdate.get('ingredientes')?.value;
       }
+      // Falta el manejo de la imagen
       if (this.comparacionDeTextos(this.receta.preparacion, this.preparacion)){
         act.preparacion = this.formUpdate.get('preparacion')?.value;
       }

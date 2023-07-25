@@ -1,29 +1,47 @@
+/* ==> FORMULARIO <==*/
 form{
     display: flex;
     flex-direction: column;
 }
 
-input {
-    width: 600px;
+/* ==> SUBTITULOS <==*/
+
+h2, h1 {
+    text-align: center;
+    color: #FFF;
+}
+
+/* ==> INPUT Y TEXTAREA <==*/
+input, textarea{
+    width: 800px;
     margin-bottom: 10px;
     margin-left: 10px;
     border-radius: 10px;
     resize: none;
 }
 
-input::placeholder{
+input::placeholder, textarea::placeholder{
     position: absolute;
-    left: 50%;
+    left: 43%;
+    font-size: 20px;
 }
 
-textarea {
-    width: 600px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    border-radius: 10px;
-    resize: vertical;
+.input-centered{
+    text-align: center;
 }
 
+input, textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 8px; 
+    border: 2px solid #000; 
+}
+
+.parrafos{
+    display:block
+}
+
+/* ==> BOTONES <==*/
 .buttonAddParrafo{
     width: 100px;
     position: relative;
@@ -36,13 +54,6 @@ textarea {
     left: 12%;
 }
 
-img{
-    width: 200px;
-    height: 150px;
-    position: relative;
-    left: 10%;
-}
-
 .buttonActualizar{
     width: 150px;
     position: relative;
@@ -50,6 +61,26 @@ img{
     margin-top: 20px;
 }
 
-.parrafos{
-    display:block
+/* ==> IMAGEN <==*/
+img{
+    width: 400px;
+    height: 300px;
+    left: 33%;
+    margin: 10px;
+    border: 3px solid #000;
+    border-radius: 10px;
+}
+
+/* ==> POSICION GENERAL <==*/
+
+.posicion{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.posIngr{
+    position: relative;
+    left: 23%;
+    transform: translate(23%);
 }

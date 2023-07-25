@@ -3,11 +3,11 @@
     <form (ngSubmit)="actualizar()" [formGroup]="formUpdate">
         <!-- NOMBRE DE LA RECETA -->
         <h2>Nombre de la Receta</h2>
-        <input type="text" placeholder="Nombre" formControlName="nombre">
+        <input class="input-centered posicion" type="text" placeholder="Nombre" formControlName="nombre">
         <!-- DESCRIPCION DE LA RECETA -->
         <h2>Descripcion de la Receta</h2>
         <div formArrayName='descripcion'>
-            <textarea class="parrafos" *ngFor="let parrafo of descripcion.controls; let i = index" [formControlName]="i"  placeholder="Descripcion"></textarea>
+            <textarea autoResize class="parrafos posicion" *ngFor="let parrafo of descripcion.controls; let i = index" [formControlName]="i"  placeholder="Descripcion"></textarea>
             <div>
                 <button type="button" (click)="crearParrafo('descripcion')" class="buttonGenerico buttonAddParrafo">Crear Parrafo</button>
                 <button type="button" (click)="eliminarParrafo('descripcion')" class="buttonGenerico buttonDeleteParrafo">Eliminar Ultimo Parrafo</button>
@@ -15,12 +15,12 @@
         </div>
         <!-- IMAGEN DE LA RECETA -->
         <h2>Imagen de la Receta</h2>
-        <img src="{{receta.imagen}}" alt="Imagen de la receta">
-        <input type="text" placeholder="URL Imagen">
+        <img class="posicion" src="{{receta.imagen}}" alt="Imagen de la receta">
+        <input class="input-centered posicion" type="text" placeholder="URL Imagen">
         <!-- INGREDIENTES DE LA RECETA -->
         <h2>Ingredientes de la Receta</h2>
         <div formArrayName="ingredientes">
-            <app-info-ingr *ngFor="let ingr of ingredientes.controls" [ingredienteForm]="ingr"></app-info-ingr>
+            <app-info-ingr class="posIngr" *ngFor="let ingr of ingredientes.controls" [ingredienteForm]="ingr"></app-info-ingr>
             <div>
                 <button type="button" (click)="crearIngr()" class="buttonGenerico buttonAddParrafo">Agregar Ingrediente</button>
                 <button type="button" (click)="eliminarIngr()" class="buttonGenerico buttonDeleteParrafo">Eliminar ultimo ingrediente</button>
@@ -29,7 +29,7 @@
         <!-- PREPARACION DE LA RECETA -->
         <h2>Preparacion de la Receta</h2>
         <div formArrayName="preparacion">
-            <textarea class="parrafos" *ngFor="let parrafo of preparacion.controls let i = index" [formControlName]="i" placeholder="Preparacion"></textarea>
+            <textarea autoResize class="parrafos posicion" *ngFor="let parrafo of preparacion.controls let i = index" [formControlName]="i" placeholder="Preparacion"></textarea>
             <div>
                 <button type="button" (click)="crearParrafo('preparacion')" class="buttonGenerico buttonAddParrafo">Crear Parrafo</button>
                 <button type="button" (click)="eliminarParrafo('preparacion')" class="buttonGenerico buttonDeleteParrafo">Eliminar Ultimo Parrafo</button>
@@ -38,7 +38,7 @@
         <!-- CONSEJOS DE LA RECETA -->
         <h2>Consejos de la Receta</h2>
         <div formArrayName="consejos">
-            <textarea class="parrafos" *ngFor="let parrafo of consejos.controls; let i = index" [formControlName]="i" placeholder="Consejos"></textarea>
+            <textarea autoResize class="parrafos posicion" *ngFor="let parrafo of consejos.controls; let i = index" [formControlName]="i" placeholder="Consejos"></textarea>
             <div>
                 <button type="button" (click)="crearParrafo('consejos')" class="buttonGenerico buttonAddParrafo">Crear Parrafo</button>
                 <button type="button" (click)="eliminarParrafo('consejos')" class="buttonGenerico buttonDeleteParrafo">Eliminar Ultimo Parrafo</button>
