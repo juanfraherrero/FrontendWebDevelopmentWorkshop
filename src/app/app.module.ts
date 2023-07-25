@@ -13,7 +13,6 @@ import { PaisesComponent } from './components/paises/paises.component';
 import { RecetasComponent } from './components/recetas/recetas.component';
 import { InfoRecetaComponent } from './components/info-receta/info-receta.component';
 import { HttpErrorInteceptor } from './error.interceptor';
-import { SelectRecetaComponent } from './components/selectReceta/selectReceta.component';
 import { WorldBgComponent } from './components/world-bg/world-bg.component';
 import { PersonaComponent } from './components/footer/persona/persona.component';
 import { infoIngrComponent } from './components/info-ingr/info-ingr.component';
@@ -31,7 +30,6 @@ import { infoIngrComponent } from './components/info-ingr/info-ingr.component';
     InfoRecetaComponent,
     WorldBgComponent,
     PersonaComponent,
-    SelectRecetaComponent,
     infoIngrComponent
   ],
   imports: [

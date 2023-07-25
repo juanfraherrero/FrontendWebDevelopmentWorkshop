@@ -7,23 +7,32 @@
     text-align: center;
     margin: auto;
     width: 50vw;
+    max-width: 700px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
 
 .paises-container {
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
-  
+
 .pais-item {
     margin: 10px;
 }
 
 ul{
     list-style: none;
-    display: flex;
     padding: 0;
     margin: 0;
     width: 100%;
-    flex-wrap: wrap;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
 }
+
+@media (max-width: 650px) { // para mobile
+    .recetario-heading {
+        font-size: 3rem;
+    }
+  }

@@ -1,10 +1,16 @@
 @use '../../../styles.scss';
 
-* {
-    width: 100%; /* Aplicar un ancho del 100% a todos los elementos dentro del componente */
-  }
+.header-wrapper{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: styles.$light-primary-button;
+}
 
 .toolbar {
+    width: 100%;
+    max-width: 1200px;
     height: 5vh;
     display: flex;
     flex-direction: row;
@@ -13,19 +19,18 @@
     font-weight: 700;
     font-size: 1.5em;
     margin: 0;
-    padding-top: 8px;
-    background-color: styles.$light-primary-button
-    // color: styles.$light-primary-button;
+    padding: 0.5rem;
+    color: styles.$light-text;
 }
 
-.toolbar-title{
-    margin-left: 11%;
-}
+// .toolbar-title{
+//     margin-left: 11%;
+// }
 
 #logo {
     width: 40px;
     height: 40px;
-    margin-left: 5%;
+    margin: 0;
     transition: scale 0.15s ease-in-out 0s;
 }
 #logo:hover, #github-logo:hover {
@@ -33,9 +38,12 @@
 
 }
 #github-logo {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
     width: 40px;
     height: 40px;
-    margin-left: 90%;
+    margin: 0;
     transition: scale 0.15s ease-in-out 0s;
-    // fill: styles.$light-primary-button;
+    fill: styles.$light-text;
 }

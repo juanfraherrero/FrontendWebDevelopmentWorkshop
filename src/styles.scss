@@ -3,18 +3,12 @@
  // CHOOSE THE THEME HERE
 $font-stack: 'Roboto', sans-serif;
 
-// $light-text: #020304;
-// $light-background: #dbe9f0;
-// $light-primary-button: #203d4b;
-// $light-secondary-button: #c6dce7;
-// $light-accent: #284b5d;
-
-$light-text: #ededed;
-$light-background: #757dad;
-$light-background-country: #f2f3f9;
-$light-primary-button: #E58500;
-$light-secondary-button: #331E00;
-$light-accent: #E58500;//#737270;//8E5E98;
+$light-text: #ededed; // texto
+$light-background: #E6F2FF; // fondo
+$light-background-country: #E6F2FF; // fondo de los paises (cambiarlo al mismo de arriba)
+$light-primary-button: #264566; // es el color primario 60%
+$light-secondary-button: #1D334A; // es el color secundario 20%
+$light-accent: #264566; // es el color de acento 10%
 
 $dark-text: #f3e1f4;
 $dark-background: #1d0b1e;

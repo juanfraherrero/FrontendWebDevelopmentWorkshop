@@ -6,6 +6,9 @@
     grid-gap: 10rem;
     grid-auto-rows: minmax(100px, auto);
     color: styles.$light-text;
+    width: 100%;
+    max-width: 1200px;
+    background-color: styles.$light-primary-button;
 }
 
 
@@ -16,6 +19,7 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
+    // width: 22vw;
 }
 
 .title{
@@ -45,3 +49,14 @@
 
 }
 
+@media screen and (max-width: 950px) {
+    .footer-grid {
+        // display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1rem;
+        grid-auto-rows: minmax(100px, auto);
+        // color: styles.$light-text;
+        // width: 100%;
+        // max-width: 1200px;
+    }
+  }

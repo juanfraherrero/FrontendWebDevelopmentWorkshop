@@ -1,3 +1,5 @@
+@use '../../../styles.scss';
+
 form{
     display: flex;
     flex-direction: column;
@@ -49,3 +51,19 @@ img{
     left: 15%;
     margin-top: 20px;
 }
+.volver-button {
+    background-color: styles.$light-primary-button;
+    color: styles.$light-text;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .volver-button:hover {
+    background-color: styles.$light-secondary-button;
+  }
+  
+  .volver-button:focus {
+    outline: none;
+    }

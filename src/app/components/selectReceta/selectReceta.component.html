@@ -1,5 +1,0 @@
-<div class="container">
-    <button class="desing-button delete-button" (click)="delete()"><img src="../../../assets/cruzeliminar.png" alt="Eliminar receta" title="Eliminar receta"/></button>
-    <button class="desing-button visualizar-button" routerLink="{{'/'+nombrePais+'/'+receta.nombre}}"><img src = "../../../assets/visualizacion.png" alt="Expandir Receta" title="Expandir Receta"></button>
-    <button class="desing-button update-button" [routerLink]="['/update/'+nombrePais+'/'+receta.nombre]" [state]="{receta: receta}"><img src = "../../../assets/update.png" alt="Modificar Receta" title="Modificar receta"></button>
-</div>

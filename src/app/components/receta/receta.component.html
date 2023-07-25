@@ -1,14 +1,23 @@
 <li class="item">
-    <img class="imagen-receta"
-        src="{{receta.imagen}}"
-        alt="imagen de {{receta.nombre}}"
+    <div class="img-container">
+        <img class="imagen-receta"
+            src="{{receta.imagen}}"
+            alt="imagen de {{receta.nombre}}"
         >
+    </div>
     <button 
+        #recetaButton
         class="receta-button" 
         title="Expandir receta"
-        (click)="menu()"
+        (click)="toggleMenu()"
         >
         {{receta.nombre}}
     </button>
-    <app-selectReceta *ngIf="verMenu" [nombrePais]="nombrePais" [receta]="receta"></app-selectReceta> 
+
+    <div class="hidden options-button " #recetaOptions >
+        <button class="desing-button visualizar-button" routerLink="{{'/'+nombrePais+'/'+receta.nombre}}"><img src = "../../../assets/visualizacion.png" alt="Expandir Receta" title="Expandir Receta"></button>
+        <button class="desing-button update-button" [routerLink]="['/update/'+nombrePais+'/'+receta.nombre]" [state]="{receta: receta}"><img src = "../../../assets/update.png" alt="Modificar Receta" title="Modificar receta"></button>
+        <button class="desing-button delete-button" (click)="delete()"><img src="../../../assets/cruzeliminar.png" alt="Eliminar receta" title="Eliminar receta"/></button>
+        <button class="desing-button cancel-button" (click)="toggleMenu()"  ><img src = "../../../assets/cruzeliminar.png" alt="Cancel" title="Cancel receta"></button>
+    </div>
 </li>

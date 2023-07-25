@@ -1,45 +1,5 @@
 @use '../../../styles.scss';
 
-.bandera-pais{
-  width: 100px;
-  height: 100%;
-}
-  
-.pais-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: styles.$light-primary-button;
-  color: styles.$light-text;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color, padding 0.1s ease-in-out 0s;
-  // transition: padding 0.1s ease-in-out 0s;
-}
-  
-.pais-button:hover {
-  background-color: styles.$light-secondary-button;
-  padding: 13px 35px;
-  font-weight: 700;
-}
-
-.volver-button {
-  background-color: styles.$light-primary-button;
-  color: styles.$light-text;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-  
-.volver-button:hover {
-  background-color: styles.$light-secondary-button;
-}
-  
-.volver-button:focus {
-  outline: none;
-  }
-
 .item {
   display: flex;
   flex-direction: column;
@@ -50,25 +10,39 @@
   margin: 0.5rem;
   padding: 1rem;
   color: styles.$light-primary-button;
-  background-color: styles.$light-background-country;
+  background-color: styles.$light-background;
   border-radius: 2rem;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
   
-  .img-container {
-    flex: 1 0 auto;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.img-container {
+  flex: 1 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .item img {
-    width: 80%;
-    max-width: 200px;
-    height: auto;
-  }
+.item img {
+  width: 80%;
+  max-width: 200px;
+  height: auto;
+}
+
+.pais-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: styles.$light-primary-button;
+  color: styles.$light-text;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: background-color, padding 0.1s ease-in-out 0s;
+}
   
-  .item button {
-    margin-top: 10px;
-  }
+.pais-button:hover {
+  background-color: styles.$light-secondary-button;
+  padding: 13px 35px;
+  font-weight: 700;
+}

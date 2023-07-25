@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 
 import Recipe from '../../interfaces/recipe';
+import { ApiService } from 'src/app/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-receta',
@@ -9,13 +11,33 @@ import Recipe from '../../interfaces/recipe';
 })
 export class RecetaComponent {
   
+  @ViewChild('recetaOptions') optionsRef!: any;
+  @ViewChild('recetaButton') buttonRef!: any;
+
   @Input() receta : Recipe = {} as Recipe;
   @Input() nombrePais : string = '';
   verMenu: boolean = false;
 
-  constructor() { }
+  constructor(private apiService: ApiService, private router:Router) { }
 
-  menu(){
-    this.verMenu = ! this.verMenu;
+  toggleMenu(){
+    this.verMenu = !this.verMenu;
+    console.log(this.buttonRef.nativeElement.classList);
+    this.buttonRef.nativeElement.classList.toggle('hidden');
+    // console.log(this.optionsRef.nativeElement);
+    this.optionsRef.nativeElement.classList.toggle('hidden');
   }
+
+  delete(){
+    let cantRecetas: number;
+    this.apiService.getRecetasPais(this.nombrePais).subscribe((response: Recipe[]) => {
+      cantRecetas = response.length;
+      this.apiService.deleteReceta(this.nombrePais, this.receta.nombre)
+        .subscribe((): void => {
+          if (cantRecetas <= 1){
+            this.router.navigate(['/']);
+          } else {
+            window.location.reload();
+          }}) 
+  } ) }
 }
