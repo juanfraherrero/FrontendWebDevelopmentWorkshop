@@ -16,18 +16,21 @@ import { Texture } from 'three';
 export class WorldBgComponent {
   @ViewChild('worldBg', { static: true }) canvasElementRef!: ElementRef<HTMLCanvasElement>; // obtenemos el elemento canvas del DOM
   
-  private background: Texture;
+  // private backgroundIMG: Texture; // imagen de fondo del canvas
+  private backgroundColor:THREE.ColorRepresentation = 0xE6F2FF; // color de fondo del canvas
 
   constructor() {
     // Asignar un valor inicial a 'background'
-    this.background = new THREE.Texture();
+    // this.background = new THREE.Texture();
   }
 
   ngOnInit() {
     const scene = new THREE.Scene();
     const textureLoader = new THREE.TextureLoader();
-    this.background = textureLoader.load('assets/cielo_estrellado.jpg');                            //creas una escena
-    scene.background = this.background;      //le asignas un color de fondo
+    
+    // this.backgroundIMG = textureLoader.load('assets/cielo_estrellado.jpg');
+    // scene.background = this.backgroundIMG;      //le asignas una iamgen de fondo
+    scene.background = new THREE.Color( this.backgroundColor );
 
     const renderer = new THREE.WebGLRenderer({ canvas: this.canvasElementRef.nativeElement }); // le pasamos el elemento canvas al renderer
     renderer.setPixelRatio( window.devicePixelRatio );

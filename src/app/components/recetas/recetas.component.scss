@@ -1,29 +1,37 @@
 @use '../../../styles.scss';
 
 .titulo-pais {
-    font-size: 36px;
-    color: #333;
-    text-align: left;
-    margin: 20px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 4rem;
+  color: styles.$light-primary-button;
+  background-color: styles.$light-background-country;
+  border-radius: 1rem;
+  text-align: center;
+  margin: auto;
+  width: 50vw;
+  max-width: 700px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
 
 .recetas-container {
-    display: flex;
-    justify-content: left;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
 }
   
 .receta-item {
-    margin: 10px;
+  margin: 10px;
 }
 
 ul{
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 }
   
 .volver-button {
@@ -33,10 +41,13 @@ ul{
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.1s ease-in-out 0s;
   }
   
   .volver-button:hover {
     background-color: styles.$light-secondary-button;
+    font-weight: 700;
   }
   
   .volver-button:focus {

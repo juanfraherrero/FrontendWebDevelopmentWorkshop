@@ -15,6 +15,7 @@ export class InfoRecetaComponent implements OnInit {
   pais:string = '';
   nombreReceta : string = '';
   receta : Recipe = {} as Recipe;
+  hayConsejos: boolean = false;
   constructor (private apiService: ApiService, private route: ActivatedRoute, private router:Router){
     
   }
@@ -26,6 +27,11 @@ export class InfoRecetaComponent implements OnInit {
 
     this.apiService.getReceta(this.pais, this.nombreReceta).subscribe( (response: Recipe) => {
       this.receta = response;
+      //Si hay consejos, seteamos la variable para mostrarlos en el html
+      if (response.consejos != undefined)
+      {
+        this.hayConsejos = true ? response.consejos.length > 0 : false;
+      }
     })
   }
 
