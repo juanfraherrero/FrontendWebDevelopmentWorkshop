@@ -8,9 +8,9 @@
         <h2>Descripcion de la Receta</h2>
         <div formArrayName='descripcion'>
             <textarea autoResize class="parrafos posicion" *ngFor="let parrafo of descripcion.controls; let i = index" [formControlName]="i"  placeholder="Descripcion"></textarea>
-            <div>
-                <button type="button" (click)="crearParrafo('descripcion')" class="buttonGenerico buttonAddParrafo">Crear Parrafo</button>
-                <button type="button" (click)="eliminarParrafo('descripcion')" class="buttonGenerico buttonDeleteParrafo">Eliminar Ultimo Parrafo</button>
+            <div class="button-config">
+                <button type="button" (click)="crearParrafo('descripcion')" class="button-update">Crear Parrafo</button>
+                <button type="button" (click)="eliminarParrafo('descripcion')" class="button-update">Eliminar Ultimo Parrafo</button>
             </div>
         </div>
         <!-- IMAGEN DE LA RECETA -->
@@ -21,37 +21,39 @@
         <h2>Ingredientes de la Receta</h2>
         <div formArrayName="ingredientes">
             <app-info-ingr class="posIngr" *ngFor="let ingr of ingredientes.controls" [ingredienteForm]="ingr"></app-info-ingr>
-            <div>
-                <button type="button" (click)="crearIngr()" class="buttonGenerico buttonAddParrafo">Agregar Ingrediente</button>
-                <button type="button" (click)="eliminarIngr()" class="buttonGenerico buttonDeleteParrafo">Eliminar ultimo ingrediente</button>
+            <div class="button-config">
+                <button type="button" (click)="crearIngr()" class="button-update">Agregar Ingrediente</button>
+                <button type="button" (click)="eliminarIngr()" class="button-update">Eliminar ultimo ingrediente</button>
             </div>
         </div>
         <!-- PREPARACION DE LA RECETA -->
         <h2>Preparacion de la Receta</h2>
         <div formArrayName="preparacion">
             <textarea autoResize class="parrafos posicion" *ngFor="let parrafo of preparacion.controls let i = index" [formControlName]="i" placeholder="Preparacion"></textarea>
-            <div>
-                <button type="button" (click)="crearParrafo('preparacion')" class="buttonGenerico buttonAddParrafo">Crear Parrafo</button>
-                <button type="button" (click)="eliminarParrafo('preparacion')" class="buttonGenerico buttonDeleteParrafo">Eliminar Ultimo Parrafo</button>
+            <div class="button-config">
+                <button type="button" (click)="crearParrafo('preparacion')" class="button-update">Crear Parrafo</button>
+                <button type="button" (click)="eliminarParrafo('preparacion')" class="button-update">Eliminar Ultimo Parrafo</button>
             </div>
         </div>
         <!-- CONSEJOS DE LA RECETA -->
         <h2>Consejos de la Receta</h2>
         <div formArrayName="consejos">
             <textarea autoResize class="parrafos posicion" *ngFor="let parrafo of consejos.controls; let i = index" [formControlName]="i" placeholder="Consejos"></textarea>
-            <div>
-                <button type="button" (click)="crearParrafo('consejos')" class="buttonGenerico buttonAddParrafo">Crear Parrafo</button>
-                <button type="button" (click)="eliminarParrafo('consejos')" class="buttonGenerico buttonDeleteParrafo">Eliminar Ultimo Parrafo</button>
+            <div class="button-config">
+                <button type="button" (click)="crearParrafo('consejos')" class="button-update">Crear Parrafo</button>
+                <button type="button" (click)="eliminarParrafo('consejos')" class="button-update">Eliminar Ultimo Parrafo</button>
             </div>
         </div>
         <!-- BOTON PARA ENVIAR EL FORMULARIO -->
-        <button type="submit" class="buttonActualizar">Actualizar Receta</button>
+        <div class="button-config">
+            <button 
+                class="button-update"
+                routerLink="{{'/' + pais + '/'  + nombreReceta}}"
+                title="Volver al inicio"
+                >
+                Volver
+            </button>
+            <button type="submit" class="button-update">Actualizar Receta</button>
+        </div>
     </form>
-    <button 
-        class="volver-button" 
-        routerLink="{{'/' + pais + '/'  + nombreReceta}}"
-        title="Volver al inicio"
-        >
-        Volver
-    </button>
 </div>

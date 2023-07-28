@@ -39,12 +39,11 @@ export class ApiService {
 
   // elmimina una receta de el pais
   deleteReceta(pais:string, receta:string): Observable<resAPIRest> {
-    return this.http.delete<resAPIRest>(`${this.apiUrl}/recipes/${pais}/${receta}`)
+    return this.http.delete<resAPIRest>(`${this.apiUrl}/recipes/deleteRecipe/${pais}/${receta}`)
   }
 
-
   updateReceta(pais:string, receta:string, modificaciones: any): Observable<resAPIRest> {
-    return this.http.put<resAPIRest>(`${this.apiUrl}/recipes/${pais}/${receta}`, modificaciones)
+    return this.http.put<resAPIRest>(`${this.apiUrl}/recipes/update/${pais}/${receta}`, modificaciones)
   }
 
   // postDatos(datos: any): Observable<any> {
