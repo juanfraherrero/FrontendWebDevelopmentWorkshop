@@ -1,7 +1,8 @@
-import { Component, OnInit, Directive, ElementRef, HostListener  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { Location } from '@angular/common'
 
 import Recipe from '../../interfaces/recipe';
 import Ingredient from 'src/app/interfaces/ingredient';
@@ -26,7 +27,7 @@ export class updateComponent implements OnInit {
       consejos: new FormArray([])
     })
 
-    constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {}
+    constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router, private location: Location) {}
     
     ngOnInit(): void {
       this.pais = this.route.snapshot.params["pais"];       //Obtengo el pais de la ruta
@@ -139,25 +140,39 @@ export class updateComponent implements OnInit {
         consejos? : string[]
       } = {};
       let redireccion: string = this.nombreReceta
+      let modificar:boolean = false;
       if (this.formUpdate.get('nombre')?.value !== this.receta.nombre){
         act.nombre = this.formUpdate.get('nombre')?.value;
-        redireccion =  this.formUpdate.get('nombre')?.value; 
+        redireccion =  this.formUpdate.get('nombre')?.value;
+        modificar = true; 
       }
       if (this.comparacionDeTextos(this.receta.descripcion, this.descripcion)){
         act.descripcion = this.formUpdate.get('descripcion')?.value;
+        modificar = true;
       }
       if (this.compararIngredientes()){
         act.ingredientes = this.formUpdate.get('ingredientes')?.value;
+        modificar = true;
       }
       // Falta el manejo de la imagen
       if (this.comparacionDeTextos(this.receta.preparacion, this.preparacion)){
         act.preparacion = this.formUpdate.get('preparacion')?.value;
+        modificar = true;
       }
       if (this.comparacionDeTextos(this.receta.consejos, this.consejos)){
         act.consejos = this.formUpdate.get('consejos')?.value;
+        modificar = true;
       }
-      this.apiService.updateReceta(this.pais, this.nombreReceta, act).subscribe((): void => {
-          this.router.navigate(['/'+this.pais+'/'+redireccion]);
-      });
+      if (modificar) {
+        this.apiService.updateReceta(this.pais, this.nombreReceta, act).subscribe((): void => {
+            this.router.navigate(['/'+this.pais+'/'+redireccion]);
+        });
+      }
+    }
+
+    // Funcion volver
+
+    goBack(){
+      this.location.back();
     }
 }

@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', component: PaisesComponent},                      // Ruta para paises
   { path: ':pais', component: RecetasComponent},                // Ruta para recetas de un pais
   { path: ':pais/:receta', component: InfoRecetaComponent },    // Ruta para receta de un pais
-  { path: 'update/:pais/:receta', component: updateComponent}   // Ruta para actualizar receta
+  { path: 'modify/:pais/:receta', component: updateComponent}   // Ruta para actualizar receta
 ];
 
 @NgModule({

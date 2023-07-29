@@ -44,11 +44,11 @@
                 <button type="button" (click)="eliminarParrafo('consejos')" class="button-update">Eliminar Ultimo Parrafo</button>
             </div>
         </div>
-        <!-- BOTON PARA ENVIAR EL FORMULARIO -->
+        <!-- BOTONES PARA ENVIAR EL FORMULARIO Y VOLVER -->
         <div class="button-config">
             <button 
                 class="button-update"
-                routerLink="{{'/' + pais + '/'  + nombreReceta}}"
+                (click)="goBack()"
                 title="Volver al inicio"
                 >
                 Volver

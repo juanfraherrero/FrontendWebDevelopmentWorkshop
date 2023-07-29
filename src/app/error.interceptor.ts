@@ -1,9 +1,6 @@
-import { HttpClient, 
-    HttpHeaders,
-    HttpInterceptor,
+import {HttpInterceptor,
     HttpHandler,
     HttpRequest,
-    HttpResponse,
     HttpErrorResponse, 
     HttpEvent} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
