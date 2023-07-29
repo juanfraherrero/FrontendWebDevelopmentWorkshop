@@ -1,0 +1,37 @@
+@use '../../../styles.scss';
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65vh;
+}
+
+.position{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.color{
+    background-color: styles.$light-background-country;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.titulocode{
+    font-size: 2rem;
+    color: styles.$light-primary-button;
+    text-align: center;
+}
+
+.message{
+    font-size: 1rem;
+    color: styles.$light-secondary-button;
+    text-align: center;
+}
+
+img{
+    width: 14rem;
+    height: 14rem;
+}

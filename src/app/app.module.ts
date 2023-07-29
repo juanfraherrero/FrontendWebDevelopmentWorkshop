@@ -16,7 +16,8 @@ import { HttpErrorInteceptor } from './error.interceptor';
 import { WorldBgComponent } from './components/world-bg/world-bg.component';
 import { PersonaComponent } from './components/footer/persona/persona.component';
 import { infoIngrComponent } from './components/info-ingr/info-ingr.component';
-import { AutoResizeDirective } from './autoResizeTextarea'
+import { ErrorComponent } from './components/error/error.component';
+import { AutoResizeDirective } from './autoResizeTextarea';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AutoResizeDirective } from './autoResizeTextarea'
     PersonaComponent,
     infoIngrComponent,
     AutoResizeDirective,
-    infoIngrComponent
+    infoIngrComponent,
+    ErrorComponent
   ],
   imports: [
     HttpClientModule,
