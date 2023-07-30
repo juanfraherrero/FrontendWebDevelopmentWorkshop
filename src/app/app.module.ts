@@ -18,6 +18,7 @@ import { PersonaComponent } from './components/footer/persona/persona.component'
 import { infoIngrComponent } from './components/info-ingr/info-ingr.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AutoResizeDirective } from './autoResizeTextarea';
+import { InsertComponent } from './components/insert/insert.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AutoResizeDirective } from './autoResizeTextarea';
     infoIngrComponent,
     AutoResizeDirective,
     infoIngrComponent,
-    ErrorComponent
+    ErrorComponent,
+    InsertComponent
   ],
   imports: [
     HttpClientModule,

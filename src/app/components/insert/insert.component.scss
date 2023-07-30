@@ -1,0 +1,129 @@
+@use '../../../styles.scss';
+
+/* ==> FORMULARIO <==*/
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==> SUBTITULOS <==*/
+
+h2, h1 {
+    color: styles.$light-primary-button;
+    background-color: styles.$light-background-country;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 800px;
+    padding: 2px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ==> INPUT Y TEXTAREA <==*/
+input, textarea{
+    width: 800px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    resize: none;
+}
+
+input::placeholder, textarea::placeholder{
+    position: absolute;
+    left: 43%;
+    font-size: 20px;
+}
+
+.input-centered{
+    text-align: center;
+}
+
+input, textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 8px; 
+    border: 2px solid #000; 
+}
+
+.parrafos{
+    display:block
+}
+
+/* ==> BOTONES <==*/
+
+.button-config{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.button-insert{
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: styles.$light-primary-button;
+    color: styles.$light-text;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background-color, padding 0.1s ease-in-out 0s;
+}
+
+.button-insert:hover {
+    background-color: styles.$light-secondary-button;
+    padding: 13px 35px;
+    font-weight: 700;
+  }
+
+/* ==> IMAGEN <==*/
+img{
+    width: 400px;
+    height: 300px;
+    left: 33%;
+    margin: 10px;
+    border: 3px solid #000;
+    border-radius: 10px;
+}
+
+/* ==> POSICION GENERAL <==*/
+
+.posicion{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.posIngr{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// .volver-button {
+//     background-color: styles.$light-primary-button;
+//     color: styles.$light-text;
+//     padding: 10px 20px;
+//     border: none;
+//     border-radius: 4px;
+//     cursor: pointer;
+//     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+//     transition: background-color 0.1s ease-in-out 0s;
+//     margin-bottom: 10px;
+//   }
+  
+//   .volver-button:hover {
+//     background-color: styles.$light-secondary-button;
+//     font-weight: 700;
+//   }
+  
+//   .volver-button:focus {
+//     outline: none;
+//     }
+
+
+
