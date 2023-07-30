@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
-import { Location } from '@angular/common'
+import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 import Recipe from '../../interfaces/recipe';
 import Ingredient from 'src/app/interfaces/ingredient';
@@ -27,7 +28,8 @@ export class updateComponent implements OnInit {
       consejos: new FormArray([])
     })
 
-    constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router, private location: Location) {}
+    constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router, private location: Location,
+      private http: HttpClient) {}
     
     ngOnInit(): void {
       this.pais = this.route.snapshot.params["pais"];       //Obtengo el pais de la ruta
@@ -128,9 +130,18 @@ export class updateComponent implements OnInit {
       return cambio;
     }
 
+    verifyURLImagen(url: string): Promise<boolean>{
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
+      });
+    }
+
     // Funcion submit del formulario
 
-    actualizar(){
+    async actualizar(){
       let act : {
         nombre?: string,
         descripcion? : string[],
@@ -154,7 +165,18 @@ export class updateComponent implements OnInit {
         act.ingredientes = this.formUpdate.get('ingredientes')?.value;
         modificar = true;
       }
-      // Falta el manejo de la imagen
+      if (this.formUpdate.get('imagen')?.value.length > 0){
+        await this.verifyURLImagen(this.formUpdate.get('imagen')?.value).then((isValid) => {
+          if (isValid){
+            act.imagen = this.formUpdate.get('imagen')?.value;
+            modificar = true;
+            console.log(act);
+          } else {
+            return;
+          }
+        })
+      }
+      console.log(act + "dd");
       if (this.comparacionDeTextos(this.receta.preparacion, this.preparacion)){
         act.preparacion = this.formUpdate.get('preparacion')?.value;
         modificar = true;

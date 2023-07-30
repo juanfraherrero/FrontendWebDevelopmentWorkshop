@@ -33,7 +33,7 @@ input, textarea{
 
 input::placeholder, textarea::placeholder{
     position: absolute;
-    left: 43%;
+    left: 35%;
     font-size: 20px;
 }
 
@@ -78,6 +78,36 @@ input, textarea {
     padding: 13px 35px;
     font-weight: 700;
   }
+
+/* ==> Subtitulos Ingredientes <==*/
+.separacion{
+    margin: 1rem;
+}
+
+h3{
+    display: inline;
+    position: relative;
+    color: styles.$light-primary-button;
+    background-color: styles.$light-background-country;
+    border-radius: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.SubTNombre{
+    left: 30%;
+    transform: translate(-30%);
+}
+
+.SubTCantidad{
+    left: 45%;
+    transform: translate(-45%);
+}
+
+.SubTOpcional{
+    left: 49%;
+    transform: translate(-49%);
+}
 
 /* ==> IMAGEN <==*/
 img{
