@@ -1,23 +1,17 @@
 <h1 class="recetario-heading">Recetario del mundo</h1>
-  
 <div 
-    *ngIf="paises;else noHayPaises"
+*ngIf="paises;else noHayPaises"
     class="paises-container"
 >
     <ul>
         <app-pais 
-            *ngFor="let pais of paises" 
-            class="pais-item" 
-            [pais]=pais>
-        </app-pais>
-    </ul>
+        *ngFor="let pais of paises" 
+        class="pais-item" 
+        [pais]=pais>
+    </app-pais>
+</ul>
 </div>
 
 <ng-template #noHayPaises>No hay paises hasta el momento cargados</ng-template>
 
-
-<button class="button-insert" title="Agregar Pais" routerLink="{{'/insert/Argentina'}}">
-    <svg alt="Agregar Pais"  viewBox="0 -960 960 960">
-        <path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z"></path>
-    </svg>
-</button>
+<app-button-add></app-button-add>

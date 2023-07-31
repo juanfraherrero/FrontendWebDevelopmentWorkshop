@@ -19,6 +19,7 @@ import { infoIngrComponent } from './components/info-ingr/info-ingr.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AutoResizeDirective } from './autoResizeTextarea';
 import { InsertComponent } from './components/insert/insert.component';
+import { ButtonAddComponent } from './components/button-add/button-add.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { InsertComponent } from './components/insert/insert.component';
     AutoResizeDirective,
     infoIngrComponent,
     ErrorComponent,
-    InsertComponent
+    InsertComponent,
+    ButtonAddComponent
   ],
   imports: [
     HttpClientModule,
