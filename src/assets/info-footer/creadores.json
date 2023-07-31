@@ -2,24 +2,23 @@
     "creadores":[
         {
             "nombre":"Burckhardt David",
-            "twitter":"http://twitter.com/",
-            "instagram": "http://instagram.com/",
-            "linkedin": "http://linkedin.com/",
-            "github": "http://github.com/"
+            "instagram": "https://www.instagram.com/david_burck/?hl=es-la",
+            "linkedin": "https://www.linkedin.com/in/david-burckhardt-02a493213/",
+            "github": "hhttps://github.com/DavidBurckhardt"
         },
         {
             "nombre":"Herrero Juan Francisco",
-            "twitter":"http://twitter.com/",
-            "instagram": "http://instagram.com/",
-            "linkedin": "http://linkedin.com/",
-            "github": "http://github.com/"
+            "twitter":"https://twitter.com/El_Herres",
+            "instagram": "https://www.instagram.com/juanfraherrero",
+            "linkedin": "https://www.linkedin.com/in/juanfranciscoherrero/",
+            "github": "https://github.com/juanfraherrero"
         },
         {
             "nombre":"Vazquez Arispe Martín",
-            "twitter":"http://twitter.com/",
-            "instagram": "http://instagram.com/",
-            "linkedin": "http://linkedin.com/",
-            "github": "http://github.com/"
+            "twitter":"https://twitter.com/ArispeVazquez",
+            "instagram": "https://www.instagram.com/martin.vazquez.arispe",
+            "linkedin":"https://www.linkedin.com/in/martin-vazquez-arispe-b37a38230/",
+            "github":  "https://github.com/MartinVazquez1982"
         }
     ]
 }
