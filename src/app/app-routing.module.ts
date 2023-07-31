@@ -10,8 +10,8 @@ import { ErrorComponent } from './components/error/error.component'
 
 const routes: Routes = [
   { path: '', component: PaisesComponent},                      // Ruta para paises
+  { path: 'insert', component: InsertComponent},                // Ruta para insertar receta
   { path: ':pais', component: RecetasComponent},                // Ruta para recetas de un pais
-  { path: 'insert/:pais', component: InsertComponent},          // Ruta para insertar receta en un pais existente
   { path: ':pais/:receta', component: InfoRecetaComponent },    // Ruta para receta de un pais
   { path: 'modify/:pais/:receta', component: updateComponent},  // Ruta para actualizar receta
   { path: 'falied/error/view', component: ErrorComponent}                   // Ruta para errores

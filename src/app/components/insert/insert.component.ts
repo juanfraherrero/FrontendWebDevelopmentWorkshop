@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
@@ -6,6 +6,7 @@ import { Location } from '@angular/common'
 
 import Recipe from '../../interfaces/recipe';
 import Ingredient from 'src/app/interfaces/ingredient';
+import Country from '../../interfaces/country';
 
 @Component({
   selector: 'app-insert',
@@ -15,7 +16,14 @@ import Ingredient from 'src/app/interfaces/ingredient';
 export class InsertComponent implements OnInit {
     pais:string = '';
     recetaNueva: Recipe = {} as Recipe;
+    paisNuevo: Country = {} as Country;
+    paisesAPI : Country[] = [];
+    selectedPais: String = 'Selecciona un país'; // Valor inicial para el contenido del select
+    otroPais: Boolean = false;
+
     formUpdate: FormGroup = new FormGroup({
+      nombrePais: new FormControl(''),
+      bandera: new FormControl(''),
       nombre: new FormControl(''),
       descripcion: new FormArray([]),
       imagen: new FormControl(''),
@@ -28,9 +36,57 @@ export class InsertComponent implements OnInit {
     
     ngOnInit(): void {
       this.pais = this.route.snapshot.params["pais"];       //Obtengo el pais de la ruta
+      this.apiService.getPaises().subscribe( (response: Country[]) => {
+        this.paisesAPI = response;
+      }
+    );
+    }
+
+    ngAfterViewInit(): void {
+      const select = document.querySelector<HTMLDivElement>('#select');
+      const opciones = document.querySelector<HTMLDivElement>('#opciones');
+      const contenidoSelect = document.querySelector<HTMLDivElement>('#select .contenido-select');
+      const hiddenInput = document.querySelector<HTMLInputElement>('#inputSelect');
+  
+      if (select && opciones && contenidoSelect && hiddenInput) {
+        document.querySelectorAll<HTMLDivElement>('#opciones > .opcion').forEach((opcion) => {
+          opcion.addEventListener('click', (e: MouseEvent) => {
+            e.preventDefault();
+            contenidoSelect.innerHTML = (e.currentTarget as HTMLDivElement).innerHTML;
+            select.classList.toggle('active');
+            opciones.classList.toggle('active');
+            hiddenInput.value = (e.currentTarget as HTMLDivElement).querySelector('.titulo')?.textContent || '';
+          });
+        });
+        select.addEventListener('click', () => {
+          select.classList.toggle('active');
+          opciones.classList.toggle('active');
+        });
+        opciones.addEventListener('click', () => {
+          select.classList.toggle('active');
+          opciones.classList.toggle('active');
+        });
+      }
+    }
+
+    valorInput(nombrePais: String, event: Event){
+      event.preventDefault(); // Evitar la redirección predeterminada del enlace <a>
+      this.selectedPais = nombrePais;
+    }
+
+    insertarPaisNuevo(){
+      this.otroPais = true;
     }
 
     // Getters de los array del form
+
+    get nombrePais(){
+      return this.formUpdate.get('nombrePais') as FormControl;
+    }
+
+    get bandera(){
+      return this.formUpdate.get('bandera') as FormControl;
+    }
 
     get descripcion(){
       return this.formUpdate.get('descripcion') as FormArray;
@@ -90,9 +146,21 @@ export class InsertComponent implements OnInit {
       this.recetaNueva.ingredientes = this.formUpdate.get('ingredientes')?.value;
       this.recetaNueva.preparacion = this.formUpdate.get('preparacion')?.value;
       this.recetaNueva.consejos = this.formUpdate.get('consejos')?.value;
-      this.apiService.insertReceta(this.pais, this.recetaNueva).subscribe((): void => {
-          this.router.navigate(['/'+this.pais]);
-      });
+      if (!this.otroPais){
+        this.apiService.insertReceta(this.selectedPais, this.recetaNueva).subscribe((): void => {
+            this.router.navigate(['/'+this.selectedPais]);
+        });
+      } else {
+        const recetas : Recipe[] = [];
+        recetas.push(this.recetaNueva);
+        this.paisNuevo.nombre = this.formUpdate.get('nombrePais')?.value;
+        this.paisNuevo.bandera = this.formUpdate.get('bandera')?.value;
+        this.paisNuevo.recetas = recetas;
+        console.log(this.paisNuevo);
+        this.apiService.insertPais(this.paisNuevo).subscribe((): void => {
+          this.router.navigate(['/']);
+        });
+      }
     }
 
     // Funcion volver

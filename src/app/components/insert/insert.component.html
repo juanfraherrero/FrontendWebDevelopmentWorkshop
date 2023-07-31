@@ -1,9 +1,44 @@
 <div>
     <h1>Insertar una receta</h1>
+    <div class="contenedor">
+		<form action="" *ngIf="!otroPais">
+            <div class="selectbox">
+              <div class="select" id="select">
+                <div class="contenido-select">
+                  <h4 class="titulo">{{ selectedPais }}</h4>
+                </div>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="opciones" id="opciones">
+                <a href="#" class="opcion" *ngFor="let pais of paisesAPI" (click)="valorInput(pais.nombre, $event)">
+                  <div class="contenido-opcion">
+                    <div class="textos">
+                      <h4 class="titulo">{{ pais.nombre }}</h4>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="opcion" (click)="insertarPaisNuevo()">
+                    <div class="contenido-opcion">
+                      <div class="textos">
+                        <h4 class="titulo"> Otro </h4>
+                      </div>
+                    </div>
+                  </a>
+              </div>
+            </div>
+            <input type="hidden" name="pais" id="inputSelect" >
+          </form>
+	</div>
     <form (ngSubmit)="crearReceta()" [formGroup]="formUpdate">
+        <div *ngIf="otroPais">
+            <h2>Nombre del Pais</h2>
+            <input class="input-centered posicion" type="text" placeholder="Nombre del pais" formControlName="nombrePais">
+            <h2>Imagen de la Bandera</h2>
+            <input class="input-centered posicion" type="text" placeholder="URL Bandera" formControlName="bandera">
+        </div>
         <!-- NOMBRE DE LA RECETA -->
         <h2>Nombre de la Receta</h2>
-        <input class="input-centered posicion" type="text" placeholder="Nombre" formControlName="nombre">
+        <input class="input-centered posicion" type="text" placeholder="Nombre de la receta" formControlName="nombre">
         <!-- DESCRIPCION DE LA RECETA -->
         <h2>Descripcion de la Receta</h2>
         <div formArrayName='descripcion'>
@@ -18,6 +53,11 @@
         <input class="input-centered posicion" type="text" placeholder="URL Imagen" formControlName="imagen">
         <!-- INGREDIENTES DE LA RECETA -->
         <h2>Ingredientes de la Receta</h2>
+        <div class="separacion">
+            <h3 class="SubTNombre"> Nombre </h3>
+            <h3 class="SubTCantidad "> Cantidad </h3>
+            <h3 class="SubTOpcional"> Opcional </h3>
+        </div>
         <div formArrayName="ingredientes">
             <app-info-ingr class="posIngr" *ngFor="let ingr of ingredientes.controls" [ingredienteForm]="ingr"></app-info-ingr>
             <div class="button-config">

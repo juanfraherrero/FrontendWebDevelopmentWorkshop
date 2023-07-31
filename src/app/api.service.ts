@@ -50,7 +50,7 @@ export class ApiService {
     return this.http.post<resAPIRest>(`${this.apiUrl}/`, pais);
   }
 
-  insertReceta(pais: string, receta: Recipe): Observable<resAPIRest>{
+  insertReceta(pais: String, receta: Recipe): Observable<resAPIRest>{
     return this.http.post<resAPIRest>(`${this.apiUrl}/${pais}`, receta);
   }
 
