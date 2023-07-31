@@ -2,7 +2,7 @@
     <h1>Modificar una receta</h1>
     <form (ngSubmit)="actualizar()" [formGroup]="formUpdate">
         <!-- NOMBRE DE LA RECETA -->
-        <h2>Nombre de la Receta</h2>
+        <h2 class="sepInicio">Nombre de la Receta</h2>
         <input class="input-centered posicion" type="text" placeholder="Nombre" formControlName="nombre">
         <!-- DESCRIPCION DE LA RECETA -->
         <h2>Descripcion de la Receta</h2>
@@ -53,13 +53,13 @@
         <div class="button-config">
             <button
                 type="button"
-                class="button-update"
+                class="button-update button-volver-position"
                 (click)="goBack()"
                 title="Volver al inicio"
                 >
                 Volver
             </button>
-            <button type="submit" class="button-update">Actualizar Receta</button>
+            <button type="submit" class="button-update button-sumbit-position">Actualizar Receta</button>
         </div>
     </form>
 </div>

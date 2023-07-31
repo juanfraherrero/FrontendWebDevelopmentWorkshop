@@ -1,6 +1,7 @@
 @use '../../../styles.scss';
 
 /* ==> FORMULARIO <==*/
+
 form{
     display: flex;
     flex-direction: column;
@@ -19,9 +20,21 @@ h2, h1 {
     width: 800px;
     padding: 2px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.sepInicio {
+    margin-top: 10vh;
+}
+
+h2 {
+    margin-top: 4vh;
 }
 
 /* ==> INPUT Y TEXTAREA <==*/
+
 input, textarea{
     width: 800px;
     margin-top: 10px;
@@ -71,17 +84,29 @@ input, textarea {
     border-radius: 0.3rem;
     cursor: pointer;
     transition: background-color, padding 0.1s ease-in-out 0s;
+    position: relative;
 }
 
 .button-update:hover {
     background-color: styles.$light-secondary-button;
     padding: 13px 35px;
     font-weight: 700;
-  }
+}
+
+.button-volver-position{
+    margin-top: 10vh;
+    margin-right: 30vw;
+}
+
+.button-sumbit-position{
+    margin-top: 10vh;
+}
 
 /* ==> Subtitulos Ingredientes <==*/
+
 .separacion{
-    margin: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 h3{
@@ -95,13 +120,13 @@ h3{
 }
 
 .SubTNombre{
-    left: 30%;
-    transform: translate(-30%);
+    left: 21%;
+    transform: translate(-21%);
 }
 
 .SubTCantidad{
-    left: 45%;
-    transform: translate(-45%);
+    left: 44%;
+    transform: translate(-44%);
 }
 
 .SubTOpcional{
@@ -110,6 +135,7 @@ h3{
 }
 
 /* ==> IMAGEN <==*/
+
 img{
     width: 400px;
     height: 300px;
