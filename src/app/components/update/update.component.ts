@@ -170,13 +170,11 @@ export class updateComponent implements OnInit {
           if (isValid){
             act.imagen = this.formUpdate.get('imagen')?.value;
             modificar = true;
-            console.log(act);
           } else {
             return;
           }
         })
       }
-      console.log(act + "dd");
       if (this.comparacionDeTextos(this.receta.preparacion, this.preparacion)){
         act.preparacion = this.formUpdate.get('preparacion')?.value;
         modificar = true;
