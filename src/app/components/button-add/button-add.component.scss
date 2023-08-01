@@ -4,11 +4,13 @@
 {
     position: absolute;
     top: calc(5vh + 0.5rem + 2vh + 0.5rem);
-    left: auto;
+    left: 0;
+    right: 0;
     width: 100vw;
     max-width: 1200px;
     height: calc(4rem * 1.18);
     padding: 0;
+    margin: auto;
 }
 
 .container-button-add{
@@ -46,11 +48,6 @@
     transform: rotate(90deg);
 }
 
-@media screen and (max-width: 1200px) {
-    .wrapper-button-add{
-        left: 0;
-    }
-}
 @media screen and (max-width: 1210px) {
     .button-insert{
         margin-right: 0.5rem;
