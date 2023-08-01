@@ -1,17 +1,10 @@
 {
     "creadores":[
         {
-            "nombre":"Zunino Alejandro",
-            "twitter":"https://twitter.com/alejandroZunino",
-            "instagram": "https://www.instagram.com/zuninoalejandro",
-            "linkedin": "https://www.linkedin.com/in/alejandro-zunino-03084096/",
-            "github": "https://github.com/alezunino"
+            "nombre":"Zunino Alejandro"
         },
         {
-            "nombre":"Teyseyre Alfredo Raul",
-            "twitter":"https://twitter.com/ateyseyre",
-            "instagram": "https://www.instagram.com/alfredoteyseyre",
-            "linkedin": "https://www.linkedin.com/in/alfredo-teyseyre-2759a225/"
+            "nombre":"Teyseyre Alfredo Raul"
         }
     ]
 }
