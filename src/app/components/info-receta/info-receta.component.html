@@ -10,15 +10,20 @@
         </ng-container>
     </section>
 
-    <section class="section">
+    <section class="section section-ingredientes">
         <h2>Ingredientes</h2>
-        <div *ngFor="let ingrediente of receta.ingredientes">
-            <p>{{ ingrediente.nombre }} </p>
-            <ul>
-                <li>{{ ingrediente.cantidad }}</li>
-                <li *ngIf="ingrediente.opcional">Es opcional</li>
-            </ul>
-        </div>
+        <ul>
+            <li class="ingrediente" *ngFor="let ingrediente of receta.ingredientes">
+                {{ ingrediente.nombre }}  
+                <div>    
+                    <span class="ingredient-opcional" *ngIf="ingrediente.opcional">Es opcional</span>
+                    <b class="ingredient-quantity">
+                        {{ ingrediente.cantidad }}
+                    </b>
+                </div>
+            </li>
+        </ul>
+               
     </section>
     
     <section class="section">
