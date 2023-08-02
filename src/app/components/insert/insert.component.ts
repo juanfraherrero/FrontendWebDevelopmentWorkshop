@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { ActivatedRoute,Router } from '@angular/router';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Location } from '@angular/common'
 
 import Recipe from '../../interfaces/recipe';
@@ -21,14 +21,21 @@ export class InsertComponent implements OnInit {
     selectedPais: String = 'Selecciona un país'; // Valor inicial para el contenido del select
     otroPais: Boolean = false;
 
+    submitted:boolean = false;
+    isSelectedCountry: boolean = true;
+    isDescription: boolean = true;
+    isingredient: boolean = true;
+    isPreparation: boolean = true;
+
+
     formUpdate: FormGroup = new FormGroup({
       nombrePais: new FormControl(''),
       bandera: new FormControl(''),
-      nombre: new FormControl(''),
-      descripcion: new FormArray([]),
-      imagen: new FormControl(''),
-      ingredientes: new FormArray<FormGroup>([]),
-      preparacion: new FormArray([]),
+      nombre: new FormControl('', Validators.required),
+      descripcion: new FormArray([],[Validators.required]),
+      imagen: new FormControl('', Validators.required),
+      ingredientes: new FormArray<FormGroup>([],[Validators.required]),
+      preparacion: new FormArray([],[Validators.required]),
       consejos: new FormArray([])
     })
 
@@ -72,10 +79,13 @@ export class InsertComponent implements OnInit {
     valorInput(nombrePais: String, event: Event){
       event.preventDefault(); // Evitar la redirección predeterminada del enlace <a>
       this.selectedPais = nombrePais;
+      this.isSelectedCountry = true;
     }
 
     insertarPaisNuevo(){
       this.otroPais = true;
+      this.formUpdate?.get('nombrePais')?.setValidators(Validators.required);
+      this.formUpdate?.get('bandera')?.setValidators(Validators.required);
     }
 
     // Getters de los array del form
@@ -140,26 +150,38 @@ export class InsertComponent implements OnInit {
     }
 
     crearReceta(){
-      this.recetaNueva.nombre = this.formUpdate.get('nombre')?.value;
-      this.recetaNueva.descripcion = this.formUpdate.get('descripcion')?.value;
-      this.recetaNueva.imagen = this.formUpdate.get('imagen')?.value;
-      this.recetaNueva.ingredientes = this.formUpdate.get('ingredientes')?.value;
-      this.recetaNueva.preparacion = this.formUpdate.get('preparacion')?.value;
-      this.recetaNueva.consejos = this.formUpdate.get('consejos')?.value;
-      if (!this.otroPais){
-        this.apiService.insertReceta(this.selectedPais, this.recetaNueva).subscribe((): void => {
+      this.submitted = true;
+      console.log(this.selectedPais.toLowerCase());
+      console.log(this.selectedPais.toLowerCase() == 'Selecciona un país'.toLowerCase());
+      
+      if (!this.formUpdate.valid || (this.selectedPais.toLowerCase() === 'Selecciona un país'.toLowerCase())) { // checkeamos que sea valido el formulario
+        if(this.selectedPais.toLowerCase() === 'Selecciona un país'.toLowerCase()){
+          this.isSelectedCountry = false;
+        }
+        return;
+      }
+      else{
+          this.recetaNueva.nombre = this.formUpdate.get('nombre')?.value;
+          this.recetaNueva.descripcion = this.formUpdate.get('descripcion')?.value;
+          this.recetaNueva.imagen = this.formUpdate.get('imagen')?.value;
+          this.recetaNueva.ingredientes = this.formUpdate.get('ingredientes')?.value;
+          this.recetaNueva.preparacion = this.formUpdate.get('preparacion')?.value;
+          this.recetaNueva.consejos = this.formUpdate.get('consejos')?.value;
+        if (!this.otroPais){
+          this.apiService.insertReceta(this.selectedPais, this.recetaNueva).subscribe((): void => {
             this.router.navigate(['/'+this.selectedPais]);
-        });
-      } else {
-        const recetas : Recipe[] = [];
-        recetas.push(this.recetaNueva);
-        this.paisNuevo.nombre = this.formUpdate.get('nombrePais')?.value;
-        this.paisNuevo.bandera = this.formUpdate.get('bandera')?.value;
-        this.paisNuevo.recetas = recetas;
-        console.log(this.paisNuevo);
-        this.apiService.insertPais(this.paisNuevo).subscribe((): void => {
-          this.router.navigate(['/']);
-        });
+          });
+        } else {
+          const recetas : Recipe[] = [];
+          recetas.push(this.recetaNueva);
+          this.paisNuevo.nombre = this.formUpdate.get('nombrePais')?.value;
+          this.paisNuevo.bandera = this.formUpdate.get('bandera')?.value;
+          this.paisNuevo.recetas = recetas;
+          console.log(this.paisNuevo);
+          this.apiService.insertPais(this.paisNuevo).subscribe((): void => {
+            this.router.navigate(['/']);
+          });
+        }
       }
     }
 

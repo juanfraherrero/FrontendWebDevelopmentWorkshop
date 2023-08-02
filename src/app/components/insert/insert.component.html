@@ -26,23 +26,48 @@
                   </a>
               </div>
             </div>
-            <input type="hidden" name="pais" id="inputSelect" >
-          </form>
+          <input type="hidden" name="pais" id="inputSelect" >
+          <div class="text-danger" 
+              *ngIf="(!this.isSelectedCountry)"
+              >
+              Seleccione un pais
+          </div>
+      </form>
 	</div>
     <form (ngSubmit)="crearReceta()" [formGroup]="formUpdate">
         <div *ngIf="otroPais">
             <h2>Nombre del Pais</h2>
             <input class="input-centered posicion" type="text" placeholder="Nombre del pais" formControlName="nombrePais">
+            <div class="text-danger" 
+                *ngIf="this.otroPais && (formUpdate.controls['nombrePais']?.value|| this.submitted) && formUpdate.controls['nombrePais']?.errors?.['required']"
+                >
+                El nombre del pais es requerido
+            </div>
             <h2>Imagen de la Bandera</h2>
             <input class="input-centered posicion" type="text" placeholder="URL Bandera" formControlName="bandera">
+            <div class="text-danger" 
+                *ngIf="this.otroPais && (formUpdate.controls['bandera'].value|| this.submitted) && formUpdate.controls['bandera'].errors?.['required']"
+                >
+                la bandera es requerida
+            </div>
         </div>
         <!-- NOMBRE DE LA RECETA -->
         <h2>Nombre de la Receta</h2>
         <input class="input-centered posicion" type="text" placeholder="Nombre de la receta" formControlName="nombre">
+        <div class="text-danger" 
+            *ngIf="(this.otroPais && formUpdate.controls['nombre'].value|| this.submitted) && formUpdate.controls['nombre'].errors?.['required']"
+            >
+            El nombre de la receta es requerida
+        </div>
         <!-- DESCRIPCION DE LA RECETA -->
         <h2>Descripcion de la Receta</h2>
         <div formArrayName='descripcion'>
             <textarea autoResize class="parrafos posicion" *ngFor="let parrafo of descripcion.controls; let i = index" [formControlName]="i"  placeholder="Descripcion"></textarea>
+            <div class="text-danger" 
+                *ngIf="(formUpdate.controls['descripcion']?.value|| this.submitted) && formUpdate.controls['descripcion']?.errors?.['required']"
+                >
+                La descripción es obligatoria
+            </div>
             <div class="button-config">
                 <button type="button" (click)="crearParrafo('descripcion')" class="button-insert">Crear Parrafo</button>
                 <button type="button" (click)="eliminarParrafo('descripcion')" class="button-insert">Eliminar Ultimo Parrafo</button>
@@ -51,6 +76,11 @@
         <!-- IMAGEN DE LA RECETA -->
         <h2>Imagen de la Receta</h2>
         <input class="input-centered posicion" type="text" placeholder="URL Imagen" formControlName="imagen">
+        <div class="text-danger" 
+            *ngIf="(this.otroPais && formUpdate.controls['imagen'].value|| this.submitted) && formUpdate.controls['imagen'].errors?.['required']"
+            >
+            La imagen es requerida
+        </div>
         <!-- INGREDIENTES DE LA RECETA -->
         <h2>Ingredientes de la Receta</h2>
         <div class="separacion">
@@ -60,6 +90,11 @@
         </div>
         <div formArrayName="ingredientes">
             <app-info-ingr class="posIngr" *ngFor="let ingr of ingredientes.controls" [ingredienteForm]="ingr"></app-info-ingr>
+            <div class="text-danger" 
+                    *ngIf="(formUpdate.controls['ingredientes']?.value|| this.submitted) && formUpdate.controls['ingredientes']?.errors?.['required']"
+                    >
+                    Los ingredientes son obligatorios
+                </div>
             <div class="button-config">
                 <button type="button" (click)="crearIngr()" class="button-insert">Agregar Ingrediente</button>
                 <button type="button" (click)="eliminarIngr()" class="button-insert">Eliminar ultimo ingrediente</button>
@@ -69,6 +104,11 @@
         <h2>Preparacion de la Receta</h2>
         <div formArrayName="preparacion">
             <textarea autoResize class="parrafos posicion" *ngFor="let parrafo of preparacion.controls let i = index" [formControlName]="i" placeholder="Preparacion"></textarea>
+            <div class="text-danger" 
+                    *ngIf="(formUpdate.controls['preparacion']?.value|| this.submitted) && formUpdate.controls['preparacion']?.errors?.['required']"
+                    >
+                    La preparación es obligatoria
+                </div>
             <div class="button-config">
                 <button type="button" (click)="crearParrafo('preparacion')" class="button-insert">Crear Parrafo</button>
                 <button type="button" (click)="eliminarParrafo('preparacion')" class="button-insert">Eliminar Ultimo Parrafo</button>
