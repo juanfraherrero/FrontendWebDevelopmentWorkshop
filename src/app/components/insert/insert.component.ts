@@ -22,6 +22,7 @@ export class InsertComponent implements OnInit {
     otroPais: Boolean = false;
 
     submitted:boolean = false;
+    itemValids:boolean = true;
     isSelectedCountry: boolean = true;
     isDescription: boolean = true;
     isingredient: boolean = true;
@@ -122,11 +123,11 @@ export class InsertComponent implements OnInit {
 
     crearParrafo(atributo: string){
       if (atributo === "descripcion"){
-        this.descripcion.push(new FormControl(''));
+        this.descripcion.push(new FormControl('', Validators.required));
       } else if (atributo === "preparacion"){
-        this.preparacion.push(new FormControl(''));
+        this.preparacion.push(new FormControl('' , Validators.required));
       } else {
-        this.consejos.push(new FormControl(''));
+        this.consejos.push(new FormControl('', Validators.required));
       }
     }
 

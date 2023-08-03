@@ -15,7 +15,8 @@ export class ApiService {
 
   private httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Cache-Control': 'no-cache'
         // Authorization: 'my-auth-token'
       })
     };
@@ -24,17 +25,20 @@ export class ApiService {
 
   // devuelve los paises con direcciones a sus banderas
   getPaises(): Observable<Country[]> {
-    return this.http.get<Country[]>(`${this.apiUrl}/`)
+    const headers = new HttpHeaders().set('Cache-Control', 'no-cache');
+    return this.http.get<Country[]>(`${this.apiUrl}/`, { headers })
   }
 
   // devuelve las recetas de un pais
   getRecetasPais(pais:string): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${this.apiUrl}/${pais}`)
+    const headers = new HttpHeaders().set('Cache-Control', 'no-cache');
+    return this.http.get<Recipe[]>(`${this.apiUrl}/${pais}`, { headers })
   }
 
   // devuelve una receta de un pais
   getReceta(pais:string, receta:string): Observable<Recipe> {
-    return this.http.get<Recipe>(`${this.apiUrl}/${pais}/${receta}`)
+    const headers = new HttpHeaders().set('Cache-Control', 'no-cache');
+    return this.http.get<Recipe>(`${this.apiUrl}/${pais}/${receta}`, { headers })
   }
 
   // elmimina una receta de el pais
