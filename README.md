@@ -1,52 +1,41 @@
-hasta ahora tenemos la página principal en donde se listan los paises que tienen alguna receta
+# Recetario del mundo
 
-    Features:
-        - agregar una barra de filtrado
-        - 
-
-Al seleccionar un país nos muestra un listado de las recetas de ese país
-    Features:
-        - filtrar las recetas del país
-        - poder eliminar desde ahí una receta
-        
-Al seleccionar un receta se despliega su información
-    Feature:
-        - poder editar la receta 
-        - poder eliminar la receta
-        - 
-
-Hacer el footer
-
-Agregar handle errors en las consultas a la API
-    - seguir esta guía https://plainenglish.io/blog/handle-errors-in-angular-with-httpclient-and-rxjs
+Recetario del mundo es una aplicación desarrollada por Burckhardt David, Herrero Juan Francisco y Vazquez Arispe Martín. Estudiantes de Ingeniería en Sistemas en la UNICEN.
 
 
-Cuando se hace una petición por las recetas de un pais específico la API devuelve un arreglo con un objeto con un arreglo, un arreglo basta. LO MISMO PASA CON EL DELETE
+## Indice
+1. [Introducción](#introducción)
+2. [Instalando Aplicación](#instalando-aplicación)
+3. [Ejecutando Aplicación](#ejecutando-aplicación)
 
-[
-    {
-        "recetas": [
-            {
-                "nombre": "Gaisburger Marsch",
-                "imagen": "https://recetasdeviajes.com/wp-content/uploads/2011/02/gaisburger-marsch.jpg"
-            },
-            {
-                "nombre": "Konigsberger Klopse",
-                "imagen": "https://recetasdeviajes.com/wp-content/uploads/2010/10/konigsberger-klopse.jpg"
-            }
-        ]
-    }
-]
+# Introducción
 
+Esta aplicación es una interfaz web para cualquier usuario que quiera buscar, compartir y apreneder todas las recetas alrededor del planeta tiera.
 
+Actualmente se encuentra solo en español.
 
-# Tasks:
-    - sacar de la url de borrar la palabra delete, se sobre entiende al hacer un delete! 
-    - Hacer el update 
-    - Si en la info receta no hay contenido que no se muestre (el caso de la sección consejo)
-    - Avances nuevo mini menu
-    - 
+La aplicación se compone de 2 repositorios: 
+- El frontend (este repositorio) 
+- El backend (https://github.com/MartinVazquez1982/WebDevelopmentWorkshop)
 
-# Feaures
-    - Agregar barra de filtrado en main
-    - Filtrar recetas de un pais
+# Instalando Aplicación
+
+**Se requiere tener previamente instalado NodeJs con npm**
+
+Para instalar la aplicación se puede descargar el repositorio en un .zip o podemos copiar el link para clonar el repositorio.
+
+Una vez que descargamos el repositorio nos paramos en la carpeta desdeuna terminal e instalamos todas las dependencias necesarias para ejecutra el frontend:
+
+``` nodejs
+npm install
+```
+
+Una vez instaladas las dependencias debemos modificar en ./package.json los scripts para definir correctamente la url de la API / Backend. Y con la url correctamente definida ya estaría listo el proyecto para ponerlo a ejecutar.
+
+# Ejecutando Aplicación
+
+Para ejecutar la aplicación, parado en la carpeta ráiz del proyecto se debe ejecutar:
+
+``` nodejs
+npm run start
+``` 
