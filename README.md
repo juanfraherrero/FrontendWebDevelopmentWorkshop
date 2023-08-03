@@ -2,7 +2,6 @@
 
 Recetario del mundo es una aplicación desarrollada por Burckhardt David, Herrero Juan Francisco y Vazquez Arispe Martín. Estudiantes de Ingeniería en Sistemas en la UNICEN.
 
-
 ## Indice
 1. [Introducción](#introducción)
 2. [Instalando Aplicación](#instalando-aplicación)
@@ -10,13 +9,13 @@ Recetario del mundo es una aplicación desarrollada por Burckhardt David, Herrer
 
 # Introducción
 
-Esta aplicación es una interfaz web para cualquier usuario que quiera buscar, compartir y apreneder todas las recetas alrededor del planeta tiera.
+Esta aplicación es una interfaz web desarrollada con Angular para cualquier usuario que quiera buscar, compartir y apreneder todas las recetas alrededor del planeta tiera.
 
 Actualmente se encuentra solo en español.
 
 La aplicación se compone de 2 repositorios: 
 - El frontend (este repositorio) 
-- El backend (https://github.com/MartinVazquez1982/WebDevelopmentWorkshop)
+- El [backend](https://github.com/MartinVazquez1982/WebDevelopmentWorkshop)
 
 # Instalando Aplicación
 
