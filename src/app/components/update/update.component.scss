@@ -160,26 +160,13 @@ img{
     align-items: center;
 }
 
-// .volver-button {
-//     background-color: styles.$light-primary-button;
-//     color: styles.$light-text;
-//     padding: 10px 20px;
-//     border: none;
-//     border-radius: 4px;
-//     cursor: pointer;
-//     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-//     transition: background-color 0.1s ease-in-out 0s;
-//     margin-bottom: 10px;
-//   }
-  
-//   .volver-button:hover {
-//     background-color: styles.$light-secondary-button;
-//     font-weight: 700;
-//   }
-  
-//   .volver-button:focus {
-//     outline: none;
-//     }
-
-
-
+.text-danger{
+    color: red;
+    font-weight: 600;
+    background-color: white;
+    border: red solid 2px;
+    border-radius: 10px;
+    margin: 0.5rem auto;
+    text-align: center;
+    padding: 0.6rem;
+}

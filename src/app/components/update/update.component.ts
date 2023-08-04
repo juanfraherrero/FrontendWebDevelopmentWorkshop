@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { ActivatedRoute,Router } from '@angular/router';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
@@ -19,12 +19,13 @@ export class updateComponent implements OnInit {
     pais:string = '';
     nombreReceta : string = '';
     receta: Recipe = {} as Recipe;
+    submitted: boolean = false;
     formUpdate: FormGroup = new FormGroup({
-      nombre: new FormControl(''),
-      descripcion: new FormArray([]),
+      nombre: new FormControl('', Validators.required),
+      descripcion: new FormArray([], [Validators.required]),
       imagen: new FormControl(''),
-      ingredientes: new FormArray<FormGroup>([]),
-      preparacion: new FormArray([]),
+      ingredientes: new FormArray<FormGroup>([], [Validators.required]),
+      preparacion: new FormArray([], [Validators.required]),
       consejos: new FormArray([])
     })
 
@@ -40,10 +41,10 @@ export class updateComponent implements OnInit {
         this.formUpdate.patchValue({
           nombre: this.receta.nombre
         });
-        this.receta.descripcion.forEach(parrafo => this.descripcion.push(new FormControl(parrafo)))
+        this.receta.descripcion.forEach(parrafo => this.descripcion.push(new FormControl(parrafo, Validators.required)))
         this.receta.ingredientes.forEach(ingrediente => this.ingredientes.push(new FormGroup({nombre: new FormControl(ingrediente.nombre), cantidad: new FormControl(ingrediente.cantidad), opcional: new FormControl(ingrediente.opcional)})))
-        this.receta.preparacion.forEach(parrafo => this.preparacion.push(new FormControl(parrafo)))
-        this.receta.consejos.forEach(parrafo => this.consejos.push(new FormControl(parrafo)))
+        this.receta.preparacion.forEach(parrafo => this.preparacion.push(new FormControl(parrafo, Validators.required)))
+        this.receta.consejos.forEach(parrafo => this.consejos.push(new FormControl(parrafo, Validators.required)))
       })
     }
 
@@ -69,11 +70,11 @@ export class updateComponent implements OnInit {
 
     crearParrafo(atributo: string){
       if (atributo === "descripcion"){
-        this.descripcion.push(new FormControl(''));
+        this.descripcion.push(new FormControl('', Validators.required));
       } else if (atributo === "preparacion"){
-        this.preparacion.push(new FormControl(''));
+        this.preparacion.push(new FormControl('', Validators.required));
       } else {
-        this.consejos.push(new FormControl(''));
+        this.consejos.push(new FormControl('', Validators.required));
       }
     }
 
@@ -142,51 +143,56 @@ export class updateComponent implements OnInit {
     // Funcion submit del formulario
 
     async actualizar(){
-      let act : {
-        nombre?: string,
-        descripcion? : string[],
-        imagen? : string,
-        ingredientes? : Ingredient[],
-        preparacion? : string[],
-        consejos? : string[]
-      } = {};
-      let redireccion: string = this.nombreReceta
-      let modificar:boolean = false;
-      if (this.formUpdate.get('nombre')?.value !== this.receta.nombre){
-        act.nombre = this.formUpdate.get('nombre')?.value;
-        redireccion =  this.formUpdate.get('nombre')?.value;
-        modificar = true; 
-      }
-      if (this.comparacionDeTextos(this.receta.descripcion, this.descripcion)){
-        act.descripcion = this.formUpdate.get('descripcion')?.value;
-        modificar = true;
-      }
-      if (this.compararIngredientes()){
-        act.ingredientes = this.formUpdate.get('ingredientes')?.value;
-        modificar = true;
-      }
-      if (this.formUpdate.get('imagen')?.value.length > 0){
-        await this.verifyURLImagen(this.formUpdate.get('imagen')?.value).then((isValid) => {
-          if (isValid){
-            act.imagen = this.formUpdate.get('imagen')?.value;
-            modificar = true;
-          } else {
-            return;
-          }
-        })
-      }
-      if (this.comparacionDeTextos(this.receta.preparacion, this.preparacion)){
-        act.preparacion = this.formUpdate.get('preparacion')?.value;
-        modificar = true;
-      }
-      if (this.comparacionDeTextos(this.receta.consejos, this.consejos)){
-        act.consejos = this.formUpdate.get('consejos')?.value;
-        modificar = true;
-      }
-      if (modificar) {
-        this.apiService.updateReceta(this.pais, this.nombreReceta, act).subscribe((): void => {
-            this.router.navigate(['/'+this.pais+'/'+redireccion]);
-        });
+      if (this.formUpdate.valid){
+        console.log('pase')
+        let act : {
+          nombre?: string,
+          descripcion? : string[],
+          imagen? : string,
+          ingredientes? : Ingredient[],
+          preparacion? : string[],
+          consejos? : string[]
+        } = {};
+        let redireccion: string = this.nombreReceta
+        let modificar:boolean = false;
+        if (this.formUpdate.get('nombre')?.value !== this.receta.nombre){
+          act.nombre = this.formUpdate.get('nombre')?.value;
+          redireccion =  this.formUpdate.get('nombre')?.value;
+          modificar = true; 
+        }
+        if (this.comparacionDeTextos(this.receta.descripcion, this.descripcion)){
+          act.descripcion = this.formUpdate.get('descripcion')?.value;
+          modificar = true;
+        }
+        if (this.compararIngredientes()){
+          act.ingredientes = this.formUpdate.get('ingredientes')?.value;
+          modificar = true;
+        }
+        if (this.formUpdate.get('imagen')?.value.length > 0){
+          await this.verifyURLImagen(this.formUpdate.get('imagen')?.value).then((isValid) => {
+            if (isValid){
+              act.imagen = this.formUpdate.get('imagen')?.value;
+              modificar = true;
+            } else {
+              return;
+            }
+          })
+        }
+        if (this.comparacionDeTextos(this.receta.preparacion, this.preparacion)){
+          act.preparacion = this.formUpdate.get('preparacion')?.value;
+          modificar = true;
+        }
+        if (this.comparacionDeTextos(this.receta.consejos, this.consejos)){
+          act.consejos = this.formUpdate.get('consejos')?.value;
+          modificar = true;
+        }
+        if (modificar) {
+          this.apiService.updateReceta(this.pais, this.nombreReceta, act).subscribe((): void => {
+              this.router.navigate(['/'+this.pais+'/'+redireccion]);
+          });
+        }
+      } else {
+        this.submitted = true;
       }
     }
 

@@ -62,14 +62,14 @@
         <!-- DESCRIPCION DE LA RECETA -->
         <h2>Descripcion de la Receta</h2>
         <div formArrayName='descripcion'>
-        <div *ngFor="let parrafo of descripcion.controls; let i = index">        
-            <textarea autoResize class="parrafos posicion" [formControlName]="i"  placeholder="Descripcion"></textarea>
-            <div class="text-danger" 
-                *ngIf="this.submitted && parrafo.errors?.['required']"
-                >
-                La descripción es obligatoria
+            <div *ngFor="let parrafo of descripcion.controls; let i = index">        
+                <textarea autoResize class="parrafos posicion" [formControlName]="i"  placeholder="Descripcion"></textarea>
+                <div class="text-danger" 
+                    *ngIf="this.submitted && parrafo.errors?.['required']"
+                    >
+                    La descripción es obligatoria
+                </div>
             </div>
-        </div>
             <div class="text-danger" 
                 *ngIf="this.submitted && formUpdate.controls['descripcion']?.errors?.['required']"
                 >
@@ -101,7 +101,7 @@
                     *ngIf="this.submitted && formUpdate.controls['ingredientes']?.errors?.['required']"
                     >
                     Los ingredientes son obligatorios
-                </div>
+            </div>
             <div class="button-config">
                 <button type="button" (click)="crearIngr()" class="button-insert">Agregar Ingrediente</button>
                 <button type="button" (click)="eliminarIngr()" class="button-insert">Eliminar ultimo ingrediente</button>
@@ -110,25 +110,39 @@
         <!-- PREPARACION DE LA RECETA -->
         <h2>Preparacion de la Receta</h2>
         <div formArrayName="preparacion">
-            <textarea autoResize class="parrafos posicion" *ngFor="let parrafo of preparacion.controls let i = index" [formControlName]="i" placeholder="Preparacion"></textarea>
-            <div class="text-danger" 
-                    *ngIf="this.submitted && formUpdate.controls['preparacion']?.errors?.['required']"
-                    >
-                    La preparación es obligatoria
+            <div *ngFor="let parrafo of preparacion.controls let i = index">
+                <textarea autoResize class="parrafos posicion" [formControlName]="i" placeholder="Preparacion"></textarea>
+                <div class="text-danger" 
+                        *ngIf="this.submitted && parrafo.errors?.['required']"
+                        >
+                        La preparación es obligatoria
                 </div>
-            <div class="button-config">
-                <button type="button" (click)="crearParrafo('preparacion')" class="button-insert">Crear Parrafo</button>
-                <button type="button" (click)="eliminarParrafo('preparacion')" class="button-insert">Eliminar Ultimo Parrafo</button>
             </div>
+        </div>
+        <div class="text-danger" 
+            *ngIf="this.submitted && formUpdate.controls['preparacion']?.errors?.['required']"
+            >
+            La preparación es obligatoria
+        </div>
+        <div class="button-config">
+            <button type="button" (click)="crearParrafo('preparacion')" class="button-insert">Crear Parrafo</button>
+            <button type="button" (click)="eliminarParrafo('preparacion')" class="button-insert">Eliminar Ultimo Parrafo</button>
         </div>
         <!-- CONSEJOS DE LA RECETA -->
         <h2>Consejos de la Receta</h2>
         <div formArrayName="consejos">
-            <textarea autoResize class="parrafos posicion" *ngFor="let parrafo of consejos.controls; let i = index" [formControlName]="i" placeholder="Consejos"></textarea>
-            <div class="button-config">
-                <button type="button" (click)="crearParrafo('consejos')" class="button-insert">Crear Parrafo</button>
-                <button type="button" (click)="eliminarParrafo('consejos')" class="button-insert">Eliminar Ultimo Parrafo</button>
-            </div>
+            <div *ngFor="let parrafo of consejos.controls; let i = index">
+                <textarea autoResize class="parrafos posicion" [formControlName]="i" placeholder="Consejos"></textarea>
+                <div class="text-danger" 
+                    *ngIf="this.submitted && parrafo.errors?.['required']"
+                    >
+                    Los consejos no pueden contener parrafos vacios
+                </div>
+            </div>        
+        </div>
+        <div class="button-config">
+            <button type="button" (click)="crearParrafo('consejos')" class="button-insert">Crear Parrafo</button>
+            <button type="button" (click)="eliminarParrafo('consejos')" class="button-insert">Eliminar Ultimo Parrafo</button>
         </div>
         <!-- BOTONES PARA ENVIAR EL FORMULARIO Y VOLVER -->
         <div class="button-config">

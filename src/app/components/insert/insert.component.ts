@@ -22,11 +22,7 @@ export class InsertComponent implements OnInit {
     otroPais: Boolean = false;
 
     submitted:boolean = false;
-    itemValids:boolean = true;
     isSelectedCountry: boolean = true;
-    isDescription: boolean = true;
-    isingredient: boolean = true;
-    isPreparation: boolean = true;
 
 
     formUpdate: FormGroup = new FormGroup({
@@ -152,8 +148,6 @@ export class InsertComponent implements OnInit {
 
     crearReceta(){
       this.submitted = true;
-      console.log(this.selectedPais.toLowerCase());
-      console.log(this.selectedPais.toLowerCase() == 'Selecciona un país'.toLowerCase());
       
       if (!this.formUpdate.valid || (this.selectedPais.toLowerCase() === 'Selecciona un país'.toLowerCase())) { // checkeamos que sea valido el formulario
         if(this.selectedPais.toLowerCase() === 'Selecciona un país'.toLowerCase()){
@@ -178,7 +172,6 @@ export class InsertComponent implements OnInit {
           this.paisNuevo.nombre = this.formUpdate.get('nombrePais')?.value;
           this.paisNuevo.bandera = this.formUpdate.get('bandera')?.value;
           this.paisNuevo.recetas = recetas;
-          console.log(this.paisNuevo);
           this.apiService.insertPais(this.paisNuevo).subscribe((): void => {
             this.router.navigate(['/']);
           });
